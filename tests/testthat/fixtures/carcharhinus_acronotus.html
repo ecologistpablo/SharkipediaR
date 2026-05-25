@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"NRJS-63f4eed48cfd5737ede","applicationID":"1513958716","transactionName":"IVYMRkIMW1pdQktDRwdaC1dDTEReV0c=","queueTime":2,"applicationTime":585,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]},feature_flags:["soft_nav"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-63f4eed48cfd5737ede",applicationID:"1513958716",browserID:"1588750396"};;/*! For license information please see nr-loader-rum-1.314.0.min.js.LICENSE.txt */
+(()=>{var e,t,r={163:(e,t,r)=>{"use strict";r.d(t,{j:()=>T});var n=r(384),i=r(1741);var s=r(2555);r(860).K7.genericEvents;const o="experimental.resources",a="register",c=e=>{if(!e||"string"!=typeof e)return!1;try{document.createDocumentFragment().querySelector(e)}catch{return!1}return!0};var u=r(2614),d=r(944),l=r(8122);const f="[data-nr-mask]",g=e=>(0,l.a)(e,(()=>{const e={feature_flags:[],experimental:{register:!1,resources:!1},mask_selector:"*",block_selector:"[data-nr-block]",mask_input_options:{color:!1,date:!1,"datetime-local":!1,email:!1,month:!1,number:!1,range:!1,search:!1,tel:!1,text:!1,time:!1,url:!1,week:!1,textarea:!1,select:!1,password:!0}};return{ajax:{deny_list:void 0,block_internal:!0,enabled:!0,autoStart:!0},api:{register:{get enabled(){return e.feature_flags.includes(a)||e.experimental.register},set enabled(t){e.experimental.register=t},duplicate_data_to_container:!1}},browser_consent_mode:{enabled:!1},distributed_tracing:{enabled:void 0,exclude_newrelic_header:void 0,cors_use_newrelic_header:void 0,cors_use_tracecontext_headers:void 0,allowed_origins:void 0},get feature_flags(){return e.feature_flags},set feature_flags(t){e.feature_flags=t},generic_events:{enabled:!0,autoStart:!0},harvest:{interval:30},jserrors:{enabled:!0,autoStart:!0},logging:{enabled:!0,autoStart:!0},metrics:{enabled:!0,autoStart:!0},obfuscate:void 0,page_action:{enabled:!0},page_view_event:{enabled:!0,autoStart:!0},page_view_timing:{enabled:!0,autoStart:!0},performance:{capture_marks:!1,capture_measures:!1,capture_detail:!0,resources:{get enabled(){return e.feature_flags.includes(o)||e.experimental.resources},set enabled(t){e.experimental.resources=t},asset_types:[],first_party_domains:[],ignore_newrelic:!0}},privacy:{cookies_enabled:!0},proxy:{assets:void 0,beacon:void 0},session:{expiresMs:u.wk,inactiveMs:u.BB},session_replay:{autoStart:!0,enabled:!1,preload:!1,sampling_rate:10,error_sampling_rate:100,collect_fonts:!1,inline_images:!1,fix_stylesheets:!0,mask_all_inputs:!0,get mask_text_selector(){return e.mask_selector},set mask_text_selector(t){c(t)?e.mask_selector="".concat(t,",").concat(f):""===t||null===t?e.mask_selector=f:(0,d.R)(5,t)},get block_class(){return"nr-block"},get ignore_class(){return"nr-ignore"},get mask_text_class(){return"nr-mask"},get block_selector(){return e.block_selector},set block_selector(t){c(t)?e.block_selector+=",".concat(t):""!==t&&(0,d.R)(6,t)},get mask_input_options(){return e.mask_input_options},set mask_input_options(t){t&&"object"==typeof t?e.mask_input_options={...t,password:!0}:(0,d.R)(7,t)}},session_trace:{enabled:!0,autoStart:!0},soft_navigations:{enabled:!0,autoStart:!0},ssl:void 0,user_actions:{enabled:!0,elementAttributes:["id","className","tagName","type"]}}})());var p=r(6154),m=r(9324);let h=0;const v={buildEnv:m.F3,distMethod:m.Xs,version:m.xv,originTime:p.WN},b={consented:!1},y={activatedFeatures:void 0,appMetadata:{},configured:!1,get consented(){return this.session?.state?.consent||b.consented},set consented(e){b.consented=e},customTransaction:void 0,denyList:[],disabled:!1,drainRegistry:new Map,harvester:void 0,isolatedBacklog:!1,isRecording:!1,loaderType:void 0,maxBytes:3e4,obfuscator:void 0,onerror:void 0,ptid:void 0,releaseIds:{},session:void 0,timeKeeper:void 0,registeredEntities:[],jsAttributesMetadata:{bytes:0},get harvestCount(){return++h}},_=e=>{const t=(0,l.a)(e,y),r=Object.keys(v).reduce((e,t)=>(e[t]={value:v[t],writable:!1,configurable:!0,enumerable:!0},e),{});return Object.defineProperties(t,r)},w=e=>{const t=e.startsWith("http");e+="/",r.p=t?e:"https://"+e};var x=r(7836),R=r(3241);const k={accountID:void 0,trustKey:void 0,agentID:void 0,licenseKey:void 0,applicationID:void 0,xpid:void 0},A=e=>(0,l.a)(e,k);function T(e,t={},r,o){let{init:a,info:c,loader_config:u,runtime:d={},exposed:l=!0}=t;if(!c){const e=(0,n.pV)();a=e.init,c=e.info,u=e.loader_config}e.init=g(a||{}),e.loader_config=A(u||{}),c.jsAttributes??={},p.bv&&(c.jsAttributes.isWorker=!0),e.info=(0,s.D)(c);const f=e.init;e.runtime??=_(d),f.proxy.assets&&w(f.proxy.assets),e.runtime.configured||(Object.defineProperty(e,"beacons",{get:()=>[e.info.beacon,e.info.errorBeacon,e.init.proxy.assets,e.init.proxy.beacon].filter(Boolean)}),Object.defineProperty(e.runtime,"denyList",{get:()=>[...e.init.ajax.deny_list||[],...e.init.ajax.block_internal?e.beacons:[]]}),e.runtime.ptid=e.agentIdentifier,function(e){const t=(0,n.pV)();Object.getOwnPropertyNames(i.W.prototype).forEach(r=>{const n=i.W.prototype[r];if("function"!=typeof n||"constructor"===n)return;let s=t[r];e[r]&&!1!==e.exposed&&"micro-agent"!==e.runtime?.loaderType&&(t[r]=(...t)=>{const n=e[r](...t);return s?s(...t):n})})}(e),e.runtime.loaderType=r,e.ee=x.ee.get(e.agentIdentifier),e.exposed=l,(0,R.W)({drained:!!e.runtime.activatedFeatures,type:"lifecycle",name:"initialize",feature:void 0,data:e.config}),e.runtime.configured=!0)}},384:(e,t,r)=>{"use strict";r.d(t,{NT:()=>a,Zm:()=>c,bQ:()=>d,dV:()=>u,pV:()=>l});var n=r(6154),i=r(1863),s=r(944),o=r(1910);const a={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net"};function c(){return n.gm.NREUM||(n.gm.NREUM={}),void 0===n.gm.newrelic&&(n.gm.newrelic=n.gm.NREUM),n.gm.NREUM}function u(){let e=c();return e.o||(e.o={ST:n.gm.setTimeout,SI:n.gm.setImmediate||n.gm.setInterval,CT:n.gm.clearTimeout,XHR:n.gm.XMLHttpRequest,REQ:n.gm.Request,EV:n.gm.Event,PR:n.gm.Promise,MO:n.gm.MutationObserver,FETCH:n.gm.fetch,WS:n.gm.WebSocket},(0,o.i)(...Object.values(e.o))),e}function d(e,t){let r=c();r.initializedAgents??={},t.initializedAt={ms:(0,i.t)(),date:new Date},r.initializedAgents[e]=t,2===Object.keys(r.initializedAgents).length&&(0,s.R)(69)}function l(){return function(){let e=c();const t=e.info||{};e.info={beacon:a.beacon,errorBeacon:a.errorBeacon,...t}}(),function(){let e=c();const t=e.init||{};e.init={...t}}(),u(),function(){let e=c();const t=e.loader_config||{};e.loader_config={...t}}(),c()}},782:(e,t,r)=>{"use strict";r.d(t,{T:()=>n});const n=r(860).K7.pageViewTiming},860:(e,t,r)=>{"use strict";r.d(t,{$J:()=>d,K7:()=>c,P3:()=>u,XX:()=>i,Yy:()=>a,df:()=>s,qY:()=>n,v4:()=>o});const n="events",i="jserrors",s="browser/blobs",o="rum",a="browser/logs",c={ajax:"ajax",genericEvents:"generic_events",jserrors:i,logging:"logging",metrics:"metrics",pageAction:"page_action",pageViewEvent:"page_view_event",pageViewTiming:"page_view_timing",sessionReplay:"session_replay",sessionTrace:"session_trace",softNav:"soft_navigations"},u={[c.pageViewEvent]:1,[c.pageViewTiming]:2,[c.metrics]:3,[c.jserrors]:4,[c.softNav]:5,[c.ajax]:6,[c.sessionTrace]:7,[c.sessionReplay]:8,[c.logging]:9,[c.genericEvents]:10},d={[c.pageViewEvent]:o,[c.pageViewTiming]:n,[c.ajax]:n,[c.softNav]:n,[c.metrics]:i,[c.jserrors]:i,[c.sessionTrace]:s,[c.sessionReplay]:s,[c.logging]:a,[c.genericEvents]:"ins"}},944:(e,t,r)=>{"use strict";r.d(t,{R:()=>i});var n=r(3241);function i(e,t){"function"==typeof console.debug&&(console.debug("New Relic Warning: https://github.com/newrelic/newrelic-browser-agent/blob/main/docs/warning-codes.md#".concat(e),t),(0,n.W)({drained:null,type:"data",name:"warn",feature:"warn",data:{code:e,secondary:t}}))}},1687:(e,t,r)=>{"use strict";r.d(t,{Ak:()=>a,Ze:()=>u,x3:()=>c});var n=r(3241),i=r(3606),s=r(860),o=r(2646);function a(e,t){if(!e)return;const r={staged:!1,priority:s.P3[t]||0};e.runtime.drainRegistry.get(t)||e.runtime.drainRegistry.set(t,r)}function c(e,t){if(!e)return;const r=e.runtime.drainRegistry;r&&(r.get(t)&&r.delete(t),l(e,t,!1),r.size&&d(e))}function u(e,t="feature",r=!1){if(e){if(!e.runtime.drainRegistry.get(t)||r)return l(e,t);e.runtime.drainRegistry.get(t).staged=!0,d(e)}}function d(e){if(!e)return;const t=Array.from(e.runtime.drainRegistry);t.every(([e,t])=>t.staged)&&(t.sort((e,t)=>e[1].priority-t[1].priority),t.forEach(([t])=>{e.runtime.drainRegistry.delete(t),l(e,t)}))}function l(e,t,r=!0){if(!e)return;const s=e.ee,a=i.i.handlers;if(s&&!s.aborted&&s.backlog&&a){if((0,n.W)({type:"lifecycle",name:"drain",feature:t}),r){const e=s.backlog[t],r=a[t];if(r){for(let t=0;e&&t<e.length;++t)f(e[t],r);Object.entries(r).forEach(([e,t])=>{Object.values(t||{}).forEach(t=>{t[0]?.on&&t[0].context()instanceof o.y&&!t[0].listeners(e).includes(t[1])&&t[0].on(e,t[1])})})}}s.isolatedBacklog||delete a[t],s.backlog[t]=null,s.emit("drain-"+t,[])}}function f(e,t){var r=e[1];Object.values(t[r]||{}).forEach(t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],s=e[2];n.apply(i,s)}})}},1738:(e,t,r)=>{"use strict";r.d(t,{U:()=>f,Y:()=>l});var n=r(3241),i=r(9908),s=r(1863),o=r(944),a=r(3969),c=r(8362),u=r(860),d=r(4261);function l(e,t,r,s){const l=s||r;!l||l[e]&&l[e]!==c.d.prototype[e]||(l[e]=function(){(0,i.p)(a.xV,["API/"+e+"/called"],void 0,u.K7.metrics,r.ee),(0,n.W)({drained:!!r.runtime?.activatedFeatures,type:"data",name:"api",feature:d.Pl+e,data:{}});try{return t.apply(this,arguments)}catch(e){(0,o.R)(23,e)}})}function f(e,t,r,n,o){const a=e.info;null===r?delete a.jsAttributes[t]:a.jsAttributes[t]=r,(o||null===r)&&(0,i.p)(d.Pl+n,[(0,s.t)(),t,r],void 0,"session",e.ee)}},1741:(e,t,r)=>{"use strict";r.d(t,{W:()=>s});var n=r(944),i=r(4261);class s{#e(e,...t){if(this[e]!==s.prototype[e])return this[e](...t);(0,n.R)(35,e)}addPageAction(e,t){return this.#e(i.hG,e,t)}register(e){return this.#e(i.eY,e)}recordCustomEvent(e,t){return this.#e(i.fF,e,t)}setPageViewName(e,t){return this.#e(i.Fw,e,t)}setCustomAttribute(e,t,r){return this.#e(i.cD,e,t,r)}noticeError(e,t){return this.#e(i.o5,e,t)}setUserId(e,t=!1){return this.#e(i.Dl,e,t)}setApplicationVersion(e){return this.#e(i.nb,e)}setErrorHandler(e){return this.#e(i.bt,e)}addRelease(e,t){return this.#e(i.k6,e,t)}log(e,t){return this.#e(i.$9,e,t)}start(){return this.#e(i.d3)}finished(e){return this.#e(i.BL,e)}recordReplay(){return this.#e(i.CH)}pauseReplay(){return this.#e(i.Tb)}addToTrace(e){return this.#e(i.U2,e)}setCurrentRouteName(e){return this.#e(i.PA,e)}interaction(e){return this.#e(i.dT,e)}wrapLogger(e,t,r){return this.#e(i.Wb,e,t,r)}measure(e,t){return this.#e(i.V1,e,t)}consent(e){return this.#e(i.Pv,e)}}},1863:(e,t,r)=>{"use strict";function n(){return Math.floor(performance.now())}r.d(t,{t:()=>n})},1910:(e,t,r)=>{"use strict";r.d(t,{i:()=>s});var n=r(944);const i=new Map;function s(...e){return e.every(e=>{if(i.has(e))return i.get(e);const t="function"==typeof e?e.toString():"",r=t.includes("[native code]"),s=t.includes("nrWrapper");return r||s||(0,n.R)(64,e?.name||t),i.set(e,r),r})}},2555:(e,t,r)=>{"use strict";r.d(t,{D:()=>a,f:()=>o});var n=r(384),i=r(8122);const s={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function o(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}const a=e=>(0,i.a)(e,s)},2614:(e,t,r)=>{"use strict";r.d(t,{BB:()=>o,H3:()=>n,g:()=>u,iL:()=>c,tS:()=>a,uh:()=>i,wk:()=>s});const n="NRBA",i="SESSION",s=144e5,o=18e5,a={STARTED:"session-started",PAUSE:"session-pause",RESET:"session-reset",RESUME:"session-resume",UPDATE:"session-update"},c={SAME_TAB:"same-tab",CROSS_TAB:"cross-tab"},u={OFF:0,FULL:1,ERROR:2}},2646:(e,t,r)=>{"use strict";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},2843:(e,t,r)=>{"use strict";r.d(t,{G:()=>s,u:()=>i});var n=r(3878);function i(e,t=!1,r,i){(0,n.DD)("visibilitychange",function(){if(t)return void("hidden"===document.visibilityState&&e());e(document.visibilityState)},r,i)}function s(e,t,r){(0,n.sp)("pagehide",e,t,r)}},3241:(e,t,r)=>{"use strict";r.d(t,{W:()=>s});var n=r(6154);const i="newrelic";function s(e={}){try{n.gm.dispatchEvent(new CustomEvent(i,{detail:e}))}catch(e){}}},3606:(e,t,r)=>{"use strict";r.d(t,{i:()=>s});var n=r(9908);s.on=o;var i=s.handlers={};function s(e,t,r,s){o(s||n.d,i,e,t,r)}function o(e,t,r,i,s){s||(s="feature"),e||(e=n.d);var o=t[s]=t[s]||{};(o[r]=o[r]||[]).push([e,i])}},3878:(e,t,r)=>{"use strict";function n(e,t){return{capture:e,passive:!1,signal:t}}function i(e,t,r=!1,i){window.addEventListener(e,t,n(r,i))}function s(e,t,r=!1,i){document.addEventListener(e,t,n(r,i))}r.d(t,{DD:()=>s,jT:()=>n,sp:()=>i})},3969:(e,t,r)=>{"use strict";r.d(t,{TZ:()=>n,XG:()=>a,rs:()=>i,xV:()=>o,z_:()=>s});const n=r(860).K7.metrics,i="sm",s="cm",o="storeSupportabilityMetrics",a="storeEventMetrics"},4234:(e,t,r)=>{"use strict";r.d(t,{W:()=>i});var n=r(1687);class i{constructor(e,t){this.agentRef=e,this.ee=e?.ee,this.featureName=t,this.blocked=!1}deregisterDrain(){(0,n.x3)(this.agentRef,this.featureName)}}},4261:(e,t,r)=>{"use strict";r.d(t,{$9:()=>u,BL:()=>a,CH:()=>g,Dl:()=>_,Fw:()=>y,PA:()=>h,Pl:()=>n,Pv:()=>k,Tb:()=>l,U2:()=>s,V1:()=>R,Wb:()=>x,bt:()=>b,cD:()=>v,d3:()=>w,dT:()=>c,eY:()=>p,fF:()=>f,hG:()=>i,k6:()=>o,nb:()=>m,o5:()=>d});const n="api-",i="addPageAction",s="addToTrace",o="addRelease",a="finished",c="interaction",u="log",d="noticeError",l="pauseReplay",f="recordCustomEvent",g="recordReplay",p="register",m="setApplicationVersion",h="setCurrentRouteName",v="setCustomAttribute",b="setErrorHandler",y="setPageViewName",_="setUserId",w="start",x="wrapLogger",R="measure",k="consent"},5289:(e,t,r)=>{"use strict";r.d(t,{GG:()=>o,Qr:()=>c,sB:()=>a});var n=r(3878),i=r(6389);function s(){return"undefined"==typeof document||"complete"===document.readyState}function o(e,t){if(s())return e();const r=(0,i.J)(e),o=setInterval(()=>{s()&&(clearInterval(o),r())},500);(0,n.sp)("load",r,t)}function a(e){if(s())return e();(0,n.DD)("DOMContentLoaded",e)}function c(e){if(s())return e();(0,n.sp)("popstate",e)}},5607:(e,t,r)=>{"use strict";r.d(t,{W:()=>n});const n=(0,r(9566).bz)()},6154:(e,t,r)=>{"use strict";r.d(t,{OF:()=>u,RI:()=>i,WN:()=>l,bv:()=>s,gm:()=>o,m:()=>c,mw:()=>a,sb:()=>d,zk:()=>f});var n=r(1863);const i="undefined"!=typeof window&&!!window.document,s="undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),o=i?window:"undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),a=Boolean("hidden"===o?.document?.visibilityState),c=""+o?.location,u=/iPad|iPhone|iPod/.test(o.navigator?.userAgent),d=u&&"undefined"==typeof SharedWorker,l=((()=>{const e=o.navigator?.userAgent?.match(/Firefox[/\s](\d+\.\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)()),f=()=>{const e=o?.performance?.getEntriesByType?.("navigation")?.[0];if(e&&e.responseStart>0&&e.responseStart<o.performance.now())return e}},6389:(e,t,r)=>{"use strict";function n(e,t=500,r={}){const n=r?.leading||!1;let i;return(...r)=>{n&&void 0===i&&(e.apply(this,r),i=setTimeout(()=>{i=clearTimeout(i)},t)),n||(clearTimeout(i),i=setTimeout(()=>{e.apply(this,r)},t))}}function i(e){let t=!1;return(...r)=>{t||(t=!0,e.apply(this,r))}}r.d(t,{J:()=>i,s:()=>n})},6630:(e,t,r)=>{"use strict";r.d(t,{T:()=>n});const n=r(860).K7.pageViewEvent},7699:(e,t,r)=>{"use strict";r.d(t,{It:()=>s,KC:()=>a,No:()=>i,qh:()=>o});var n=r(860);const i=16e3,s=1e6,o="SESSION_ERROR",a={[n.K7.logging]:!0,[n.K7.genericEvents]:!0,[n.K7.jserrors]:!0,[n.K7.ajax]:!0}},7836:(e,t,r)=>{"use strict";r.d(t,{P:()=>a,ee:()=>c});var n=r(384),i=r(8990),s=r(2646),o=r(5607);const a="nr@context:".concat(o.W),c=function e(t,r){var n={},o={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,s){!1!==s&&(s=!0);if(c.aborted&&!i)return;t&&s&&t.emit(e,r,n);var a=g(n);m(e).forEach(e=>{e.apply(a,r)});var u=v()[o[e]];u&&u.push([f,e,r,a]);return a},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||"feature",f.aborted)return;Object.entries(e||{}).forEach(([e,n])=>{o[n]=t,t in r||(r[t]=[])})},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach(e=>{delete f.backlog[e]})},isBuffering:function(e){return!!v()[o[e]]},debugId:r,backlog:l?{}:t&&"object"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,"aborted",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof s.y?e:e?(0,i.I)(e,a,()=>new s.y(a)):new s.y(a)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,"globalEE"),u=(0,n.Zm)();u.ee||(u.ee=c)},8122:(e,t,r)=>{"use strict";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||"object"!=typeof e)return(0,n.R)(3);if(!t||"object"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),s=0===Object.keys(r).length?e:r;for(let o in s)if(void 0!==e[o])try{if(null===e[o]){r[o]=null;continue}Array.isArray(e[o])&&Array.isArray(t[o])?r[o]=Array.from(new Set([...e[o],...t[o]])):e[o]instanceof Map||e[o]instanceof Set||e[o]instanceof Date||e[o]instanceof RegExp?r[o]=e[o]:"object"==typeof e[o]&&"object"==typeof t[o]?r[o]=i(e[o],t[o]):r[o]=e[o]}catch(e){r[o]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},8362:(e,t,r)=>{"use strict";r.d(t,{d:()=>s});var n=r(9566),i=r(1741);class s extends i.W{agentIdentifier=(0,n.LA)(16)}},8374:(e,t,r)=>{r.nc=(()=>{try{return document?.currentScript?.nonce}catch(e){}return""})()},8990:(e,t,r)=>{"use strict";r.d(t,{I:()=>i});var n=Object.prototype.hasOwnProperty;function i(e,t,r){if(n.call(e,t))return e[t];var i=r();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:i,writable:!0,enumerable:!1}),i}catch(e){}return e[t]=i,i}},9324:(e,t,r)=>{"use strict";r.d(t,{F3:()=>i,Xs:()=>s,xv:()=>n});const n="1.314.0",i="PROD",s="CDN"},9566:(e,t,r)=>{"use strict";r.d(t,{LA:()=>a,bz:()=>o});var n=r(6154);const i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";function s(e,t){return e?15&e[t]:16*Math.random()|0}function o(){const e=n.gm?.crypto||n.gm?.msCrypto;let t,r=0;return e&&e.getRandomValues&&(t=e.getRandomValues(new Uint8Array(30))),i.split("").map(e=>"x"===e?s(t,r++).toString(16):"y"===e?(3&s()|8).toString(16):e).join("")}function a(e){const t=n.gm?.crypto||n.gm?.msCrypto;let r,i=0;t&&t.getRandomValues&&(r=t.getRandomValues(new Uint8Array(e)));const o=[];for(var a=0;a<e;a++)o.push(s(r,i++).toString(16));return o.join("")}},9908:(e,t,r)=>{"use strict";r.d(t,{d:()=>n,p:()=>i});var n=r(7836).ee.get("handle");function i(e,t,r,i,s){s?(s.buffer([e],i),s.emit(e,t,r)):(n.buffer([e],i),n.emit(e,t,r))}}},n={};function i(e){var t=n[e];if(void 0!==t)return t.exports;var s=n[e]={exports:{}};return r[e](s,s.exports,i),s.exports}i.m=r,i.d=(e,t)=>{for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=e=>Promise.all(Object.keys(i.f).reduce((t,r)=>(i.f[r](e,t),t),[])),i.u=e=>"nr-rum-1.314.0.min.js",i.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),e={},t="NRBA-1.314.0.PROD:",i.l=(r,n,s,o)=>{if(e[r])e[r].push(n);else{var a,c;if(void 0!==s)for(var u=document.getElementsByTagName("script"),d=0;d<u.length;d++){var l=u[d];if(l.getAttribute("src")==r||l.getAttribute("data-webpack")==t+s){a=l;break}}if(!a){c=!0;var f={296:"sha512-FbQYvzpOfwjph/QfB76yraYvsPfIoLIoXmbBPgOSL90m11LUnHqHPaz/B+tzU1w8bIavuZOM2X1VS11GuaaFBA=="};(a=document.createElement("script")).charset="utf-8",i.nc&&a.setAttribute("nonce",i.nc),a.setAttribute("data-webpack",t+s),a.src=r,0!==a.src.indexOf(window.location.origin+"/")&&(a.crossOrigin="anonymous"),f[o]&&(a.integrity=f[o])}e[r]=[n];var g=(t,n)=>{a.onerror=a.onload=null,clearTimeout(p);var i=e[r];if(delete e[r],a.parentNode&&a.parentNode.removeChild(a),i&&i.forEach(e=>e(n)),t)return t(n)},p=setTimeout(g.bind(null,void 0,{type:"timeout",target:a}),12e4);a.onerror=g.bind(null,a.onerror),a.onload=g.bind(null,a.onload),c&&document.head.appendChild(a)}},i.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.p="https://js-agent.newrelic.com/",(()=>{var e={374:0,840:0};i.f.j=(t,r)=>{var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var s=new Promise((r,i)=>n=e[t]=[r,i]);r.push(n[2]=s);var o=i.p+i.u(t),a=new Error;i.l(o,r=>{if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var s=r&&("load"===r.type?"missing":r.type),o=r&&r.target&&r.target.src;a.message="Loading chunk "+t+" failed: ("+s+": "+o+")",a.name="ChunkLoadError",a.type=s,a.request=o,n[1](a)}},"chunk-"+t,t)}};var t=(t,r)=>{var n,s,[o,a,c]=r,u=0;if(o.some(t=>0!==e[t])){for(n in a)i.o(a,n)&&(i.m[n]=a[n]);if(c)c(i)}for(t&&t(r);u<o.length;u++)s=o[u],i.o(e,s)&&e[s]&&e[s][0](),e[s]=0},r=self["webpackChunk:NRBA-1.314.0.PROD"]=self["webpackChunk:NRBA-1.314.0.PROD"]||[];r.forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r))})(),(()=>{"use strict";i(8374);var e=i(8362),t=i(860);const r=Object.values(t.K7);var n=i(163);var s=i(9908),o=i(1863),a=i(4261),c=i(1738);var u=i(1687),d=i(4234),l=i(5289),f=i(6154),g=i(944),p=i(384);const m=e=>f.RI&&!0===e?.privacy.cookies_enabled;function h(e){return!!(0,p.dV)().o.MO&&m(e)&&!0===e?.session_trace.enabled}var v=i(6389),b=i(7699);class y extends d.W{constructor(e,t){super(e,t),this.abortHandler=void 0,this.featAggregate=void 0,this.loadedSuccessfully=void 0,this.onAggregateImported=new Promise(e=>{this.loadedSuccessfully=e}),this.deferred=Promise.resolve(),!1===e.init[this.featureName].autoStart?this.deferred=new Promise((t,r)=>{this.ee.on("manual-start-all",(0,v.J)(()=>{(0,u.Ak)(e,this.featureName),t()}))}):(0,u.Ak)(e,t)}importAggregator(e,t,r={}){if(this.featAggregate)return;const n=async()=>{let n;await this.deferred;try{if(m(e.init)){const{setupAgentSession:t}=await i.e(296).then(i.bind(i,2612));n=t(e)}}catch(e){(0,g.R)(20,e),this.ee.emit("internal-error",[e]),(0,s.p)(b.qh,[e],void 0,this.featureName,this.ee)}try{if(!this.#t(this.featureName,n,e.init))return(0,u.Ze)(this.agentRef,this.featureName),void this.loadedSuccessfully(!1);const{Aggregate:i}=await t();this.featAggregate=new i(e,r),e.runtime.harvester.initializedAggregates.push(this.featAggregate),this.loadedSuccessfully(!0)}catch(e){(0,g.R)(34,e),this.abortHandler?.(),(0,u.Ze)(this.agentRef,this.featureName,!0),this.loadedSuccessfully(!1),this.ee&&this.ee.abort()}};f.RI?(0,l.GG)(()=>n(),!0):n()}#t(e,r,n){if(this.blocked)return!1;switch(e){case t.K7.sessionReplay:return h(n)&&!!r;case t.K7.sessionTrace:return!!r;default:return!0}}}var _=i(6630),w=i(2614),x=i(3241);class R extends y{static featureName=_.T;constructor(e){var t;super(e,_.T),this.setupInspectionEvents(),t=e,(0,c.Y)(a.Fw,function(e,r){"string"==typeof e&&("/"!==e.charAt(0)&&(e="/"+e),t.runtime.customTransaction=(r||"http://custom.transaction")+e,(0,s.p)(a.Pl+a.Fw,[(0,o.t)()],void 0,void 0,t.ee))},t),this.importAggregator(e,()=>i.e(296).then(i.bind(i,146)))}setupInspectionEvents(){const e=(e,t)=>{e&&(0,x.W)({timeStamp:e.timeStamp,loaded:"complete"===e.target.readyState,type:"window",name:t,data:e.target.location+""})};(0,l.sB)(t=>{e(t,"DOMContentLoaded")}),(0,l.GG)(t=>{e(t,"load")}),(0,l.Qr)(t=>{e(t,"navigate")}),this.ee.on(w.tS.UPDATE,(e,t)=>{(0,x.W)({type:"lifecycle",name:"session",data:t})})}}class k extends e.d{constructor(e){var t;(super(),f.gm)?(this.features={},(0,p.bQ)(this.agentIdentifier,this),this.desiredFeatures=new Set(e.features||[]),this.desiredFeatures.add(R),(0,n.j)(this,e,e.loaderType||"agent"),t=this,(0,c.Y)(a.cD,function(e,r,n=!1){if("string"==typeof e){if(["string","number","boolean"].includes(typeof r)||null===r)return(0,c.U)(t,e,r,a.cD,n);(0,g.R)(40,typeof r)}else(0,g.R)(39,typeof e)},t),function(e){(0,c.Y)(a.Dl,function(t,r=!1){if("string"!=typeof t&&null!==t)return void(0,g.R)(41,typeof t);const n=e.info.jsAttributes["enduser.id"];r&&null!=n&&n!==t?(0,s.p)(a.Pl+"setUserIdAndResetSession",[t],void 0,"session",e.ee):(0,c.U)(e,"enduser.id",t,a.Dl,!0)},e)}(this),function(e){(0,c.Y)(a.nb,function(t){if("string"==typeof t||null===t)return(0,c.U)(e,"application.version",t,a.nb,!1);(0,g.R)(42,typeof t)},e)}(this),function(e){(0,c.Y)(a.d3,function(){e.ee.emit("manual-start-all")},e)}(this),function(e){(0,c.Y)(a.Pv,function(t=!0){if("boolean"==typeof t){if((0,s.p)(a.Pl+a.Pv,[t],void 0,"session",e.ee),e.runtime.consented=t,t){const t=e.features.page_view_event;t.onAggregateImported.then(e=>{const r=t.featAggregate;e&&!r.sentRum&&r.sendRum()})}}else(0,g.R)(65,typeof t)},e)}(this),this.run()):(0,g.R)(21)}get config(){return{info:this.info,init:this.init,loader_config:this.loader_config,runtime:this.runtime}}get api(){return this}run(){try{const e=function(e){const t={};return r.forEach(r=>{t[r]=!!e[r]?.enabled}),t}(this.init),n=[...this.desiredFeatures];n.sort((e,r)=>t.P3[e.featureName]-t.P3[r.featureName]),n.forEach(r=>{if(!e[r.featureName]&&r.featureName!==t.K7.pageViewEvent)return;const n=function(e){switch(e){case t.K7.ajax:return[t.K7.jserrors];case t.K7.sessionTrace:return[t.K7.ajax,t.K7.pageViewEvent];case t.K7.sessionReplay:return[t.K7.sessionTrace];case t.K7.pageViewTiming:return[t.K7.pageViewEvent];default:return[]}}(r.featureName).filter(e=>!(e in this.features));n.length>0&&(0,g.R)(36,{targetFeature:r.featureName,missingDependencies:n}),this.features[r.featureName]=new r(this)})}catch(e){(0,g.R)(22,e);for(const e in this.features)this.features[e].abortHandler?.();const t=(0,p.Zm)();delete t.initializedAgents[this.agentIdentifier]?.features,delete this.sharedAggregator;return t.ee.get(this.agentIdentifier).abort(),!1}}}var A=i(2843),T=i(782);class E extends y{static featureName=T.T;constructor(e){super(e,T.T),f.RI&&((0,A.u)(()=>(0,s.p)("docHidden",[(0,o.t)()],void 0,T.T,this.ee),!0),(0,A.G)(()=>(0,s.p)("winPagehide",[(0,o.t)()],void 0,T.T,this.ee)),this.importAggregator(e,()=>i.e(296).then(i.bind(i,2117))))}}var S=i(3969);class j extends y{static featureName=S.TZ;constructor(e){super(e,S.TZ),this.importAggregator(e,()=>i.e(296).then(i.bind(i,9623)))}}new k({features:[R,E,j],loaderType:"lite"})})()})();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>sharkipedia - elasmobranch traits & trends</title>
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-2e5493fc80942f48485ff9e109fafc187fb7af1caca8be5d652fd582a4f456b1.ico" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/apple-icon-8b5415b1719e2e7de5d58f747ddb539658dc19135e165712f931d69f72c4286f.png" />
+
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="Srscv5in44E554ZMlitcct19OW0Qwx2JGApnzXIq0ZglfyD_w_b36UTcSJOQwRR1tI4kjcpqe9rgcXGcaJdkTQ" />
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-tooltip/1.2.0/bulma-tooltip.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/application-056593fa1092bda64cce62748cb5138bebe542b6fe1210ecf55fbc0f4c2c1582.css" media="all" data-turbolinks-track="reload" />
+    <script src="/assets/application-b47a059a1f992958715a0bea74104fac03351dcf66542c47f0fdcb61bb83a262.js" data-turbolinks-track="reload"></script>
+
+    <link rel="stylesheet" href="/packs/css/application-55efca17.css" media="all" data-turbolinks-track="reload" />
+    <script src="/packs/js/application-3aa6330195a73ce65b61.js" data-turbolinks-track="reload"></script>
+  </head>
+  <body class='species show'>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/assets/sharkipedia_logo-46022d2232e0c13330a0c4d19fec3da1244ee3137442cd07283db88e1d5d2c6a.png" width="98" height="98" />
+</a>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">Home</a>
+
+      <a class="navbar-item" href="/species">Species</a>
+
+      <a class="navbar-item" href="/protected_species">Protected Species</a>
+
+      <a class="navbar-item" href="/traits">Traits</a>
+
+      <a class="navbar-item" href="/trends">Trends</a>
+
+      <a class="navbar-item" href="/about">About</a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="/references">References</a>
+          <a class="navbar-item" href="/data_export">Data Export</a>
+          <a class="navbar-item" href="/procedure">Procedures</a>
+          <a class="navbar-item" href="/contact">Contact</a>
+          <a class="navbar-item" href="/api">API</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="https://github.com/sharkipedia/sharkipedia/issues/new" target="_blank">
+            Report an issue
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="navbar-end">
+
+      <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" href="/users/sign_up">
+              <strong>Sign up</strong>
+</a>            <a class="button is-light" href="/users/sign_in">Log in</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+
+</div>
+
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Carcharhinus acronotus</h1>
+
+<div class="columns">
+  <div class="column">
+    <p>
+      <b>Superorder:</b> Galeomorphii
+    </p>
+    <p>
+      <b>Subclass:</b> Elasmobranchii
+    </p>
+    <p>
+      <b>Order:</b> Carcharhiniformes
+    </p>
+    <p>
+      <b>Family:</b> Carcharhinidae
+    </p>
+  </div>
+  <div class="column">
+      <a class="button is-primary is-pulled-right" href="/species/carcharhinus-acronotus.csv">Export trait data as CSV</a>
+    <p class="title is-6">External references for this species:</p>
+    <a target="_blank" href="https://www.iucnredlist.org/search?query=Carcharhinus acronotus&amp;searchType=species">IUCN Red List</a>
+    <h5 class="title is-5 mt-3 mb-2">Species Regulated by International Treaties</h5><p>CITES: Appendix II (2022) </p>
+  </div>
+</div>
+
+  <h3 class='subtitle is-3'>Traits</h2>
+
+    <h4 class='subtitle is-4'>Ecological Role</h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Standard</th>
+          <th>ValueType</th>
+          <th>Sex</th>
+          <th>Location</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><a href="/traits/77">Direct Predation</a></td>
+            <td>Medium</td>
+            <td>Effect size</td>
+            <td>mean</td>
+            <td>Pooled</td>
+            <td>Caribbean</td>
+            <td><a href="/references/clementi2021">clementi2021</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/77">Direct Predation</a></td>
+            <td>Medium</td>
+            <td>Strength of evidence</td>
+            <td>mean</td>
+            <td>Pooled</td>
+            <td>Caribbean</td>
+            <td><a href="/references/clementi2021">clementi2021</a></td>
+          </tr>
+      </tbody>
+    </table>
+    <h4 class='subtitle is-4'>Age</h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Standard</th>
+          <th>ValueType</th>
+          <th>Sex</th>
+          <th>Location</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><a href="/traits/2">Amat50</a></td>
+            <td>4.3</td>
+            <td>Year</td>
+            <td>mean</td>
+            <td>Male</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+      </tbody>
+    </table>
+    <h4 class='subtitle is-4'>Reproduction</h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Standard</th>
+          <th>ValueType</th>
+          <th>Sex</th>
+          <th>Location</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><a href="/traits/44">Gestation length</a></td>
+            <td>11</td>
+            <td>Month</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/52">Max uterine width</a></td>
+            <td>15.51</td>
+            <td>mm</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/51">Max oviducal width</a></td>
+            <td>35.35</td>
+            <td>mm</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/48">Ovum diameter</a></td>
+            <td>28.83</td>
+            <td>mm</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/33">Ovulation</a></td>
+            <td>June</td>
+            <td>Month</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/28">Breeding</a></td>
+            <td>May</td>
+            <td>Month</td>
+            <td>min</td>
+            <td>Pooled</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/37">Parturition</a></td>
+            <td>May</td>
+            <td>Month</td>
+            <td>min</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/4">Ovarian fecundity</a></td>
+            <td>9.65</td>
+            <td>n</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/10">Uterine fecundity</a></td>
+            <td>3.53</td>
+            <td>n</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/10">Uterine fecundity</a></td>
+            <td>1</td>
+            <td>n</td>
+            <td>min</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/55">Embryonic sex ratio</a></td>
+            <td>61</td>
+            <td>n</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/46">Breeding interval</a></td>
+            <td>2</td>
+            <td>Year</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/46">Breeding interval</a></td>
+            <td>1</td>
+            <td>Year</td>
+            <td>mean</td>
+            <td>Male</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/54">Seasonal</a></td>
+            <td>yes</td>
+            <td>Yes</td>
+            <td></td>
+            <td>Pooled</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/56">Reproductive mode</a></td>
+            <td>Placentotrophy</td>
+            <td>Category</td>
+            <td></td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/44">Gestation length</a></td>
+            <td>10</td>
+            <td>Month</td>
+            <td></td>
+            <td>Female</td>
+            <td>Gulf of Mexico</td>
+            <td><a href="/references/trinidadcruz1997">trinidadcruz1997</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/10">Uterine fecundity</a></td>
+            <td>5</td>
+            <td>n</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>Gulf of Mexico</td>
+            <td><a href="/references/trinidadcruz1997">trinidadcruz1997</a></td>
+          </tr>
+      </tbody>
+    </table>
+    <h4 class='subtitle is-4'>Length</h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Standard</th>
+          <th>ValueType</th>
+          <th>Sex</th>
+          <th>Location</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><a href="/traits/1">Lmat50</a></td>
+            <td>89.6</td>
+            <td>cm FL</td>
+            <td>mean</td>
+            <td>Male</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/13">Length at first maturity</a></td>
+            <td>87.5</td>
+            <td>cm FL</td>
+            <td>min</td>
+            <td>Male</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/19">Length of largest immature</a></td>
+            <td>92.6</td>
+            <td>cm FL</td>
+            <td>max</td>
+            <td>Male</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/1">Lmat50</a></td>
+            <td>96.4</td>
+            <td>cm FL</td>
+            <td>mean</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/13">Length at first maturity</a></td>
+            <td>91</td>
+            <td>cm FL</td>
+            <td>min</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/19">Length of largest immature</a></td>
+            <td>95.8</td>
+            <td>cm FL</td>
+            <td>max</td>
+            <td>Female</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/38">Lbirth</a></td>
+            <td>31</td>
+            <td>cm FL</td>
+            <td>min</td>
+            <td>Unspecified</td>
+            <td>South Carolina</td>
+            <td><a href="/references/driggers2004a">driggers2004a</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/30">Lmax-observed</a></td>
+            <td>128</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Female</td>
+            <td>Gulf of Mexico</td>
+            <td><a href="/references/trinidadcruz1997">trinidadcruz1997</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/30">Lmax-observed</a></td>
+            <td>127</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Male</td>
+            <td>Gulf of Mexico</td>
+            <td><a href="/references/trinidadcruz1997">trinidadcruz1997</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/38">Lbirth</a></td>
+            <td>61.8</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Pooled</td>
+            <td>Gulf of Mexico</td>
+            <td><a href="/references/trinidadcruz1997">trinidadcruz1997</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/13">Length at first maturity</a></td>
+            <td>99</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Male</td>
+            <td>Campeche</td>
+            <td><a href="/references/uribemartinez1993">uribemartinez1993</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/13">Length at first maturity</a></td>
+            <td>106</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Female</td>
+            <td>Campeche</td>
+            <td><a href="/references/uribemartinez1993">uribemartinez1993</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/30">Lmax-observed</a></td>
+            <td>114</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Male</td>
+            <td>Campeche</td>
+            <td><a href="/references/uribemartinez1993">uribemartinez1993</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/30">Lmax-observed</a></td>
+            <td>135</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Female</td>
+            <td>Campeche</td>
+            <td><a href="/references/uribemartinez1993">uribemartinez1993</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/38">Lbirth</a></td>
+            <td>41</td>
+            <td>cm TL</td>
+            <td>raw_value</td>
+            <td>Pooled</td>
+            <td>Campeche</td>
+            <td><a href="/references/uribemartinez1993">uribemartinez1993</a></td>
+          </tr>
+      </tbody>
+    </table>
+    <h4 class='subtitle is-4'>Relationships</h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Standard</th>
+          <th>ValueType</th>
+          <th>Sex</th>
+          <th>Location</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><a href="/traits/6">a</a></td>
+            <td>0.1217</td>
+            <td>Coefficient</td>
+            <td></td>
+            <td>Pooled</td>
+            <td>Gulf of Mexico</td>
+            <td><a href="/references/trinidadcruz1997">trinidadcruz1997</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/12">b</a></td>
+            <td>2.869</td>
+            <td>Coefficient</td>
+            <td></td>
+            <td>Pooled</td>
+            <td>Gulf of Mexico</td>
+            <td><a href="/references/trinidadcruz1997">trinidadcruz1997</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/6">a</a></td>
+            <td>3.7484</td>
+            <td>Coefficient</td>
+            <td>raw_value</td>
+            <td>Pooled</td>
+            <td>Campeche</td>
+            <td><a href="/references/uribemartinez1993">uribemartinez1993</a></td>
+          </tr>
+          <tr>
+            <td><a href="/traits/12">b</a></td>
+            <td>1.2528</td>
+            <td>Coefficient</td>
+            <td>raw_value</td>
+            <td>Pooled</td>
+            <td>Campeche</td>
+            <td><a href="/references/uribemartinez1993">uribemartinez1993</a></td>
+          </tr>
+      </tbody>
+    </table>
+
+    <h3 class='subtitle is-3'>Trends</h2>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th></th>
+        <th>Unit</th>
+          <th>Reference</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>North Carolina to Brownsville (USA)</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1989&quot;,&quot;1.4412&quot;],[&quot;1990&quot;,&quot;1.8373&quot;],[&quot;1991&quot;,&quot;1.9186&quot;],[&quot;1992&quot;,&quot;1.843&quot;],[&quot;1993&quot;,&quot;1.7666&quot;],[&quot;1994&quot;,&quot;2.4777&quot;],[&quot;1995&quot;,&quot;2.9529&quot;],[&quot;1996&quot;,&quot;3.2706&quot;],[&quot;1997&quot;,&quot;3.1155&quot;],[&quot;1998&quot;,&quot;2.9609&quot;],[&quot;1999&quot;,&quot;2.7273&quot;],[&quot;2000&quot;,&quot;1.785&quot;],[&quot;2001&quot;,&quot;0.8427&quot;],[&quot;2002&quot;,&quot;0.6878&quot;],[&quot;2003&quot;,&quot;0.8479&quot;],[&quot;2004&quot;,&quot;0.9293&quot;],[&quot;2005&quot;,&quot;0.1445&quot;],[&quot;2006&quot;,&quot;-0.6402&quot;],[&quot;2007&quot;,&quot;-1.2676&quot;],[&quot;2008&quot;,&quot;-1.1863&quot;],[&quot;2009&quot;,&quot;-1.6561&quot;],[&quot;2010&quot;,&quot;-1.9684&quot;],[&quot;2011&quot;,&quot;-1.9658&quot;],[&quot;2012&quot;,&quot;-2.5931&quot;],[&quot;2013&quot;,&quot;-4.2441&quot;],[&quot;2014&quot;,&quot;-4.7137&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/peterson2017">peterson2017</a></td>
+          <td><a href="/trends/3537">Details</a></td>
+        </tr>
+        <tr>
+          <td>North Gulf of Mexico (USA)</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1987&quot;,&quot;0&quot;],[&quot;1988&quot;,&quot;0&quot;],[&quot;1989&quot;,&quot;0.012784998934583422&quot;],[&quot;1990&quot;,&quot;0.008037602820211515&quot;],[&quot;1991&quot;,&quot;0.007257714546775335&quot;],[&quot;1992&quot;,&quot;0.005933179723502304&quot;],[&quot;1993&quot;,&quot;0.011075321649776078&quot;],[&quot;1994&quot;,&quot;0.01713467712410552&quot;],[&quot;1995&quot;,&quot;0.017304358538096372&quot;],[&quot;1996&quot;,&quot;0.012804688853499757&quot;],[&quot;1997&quot;,&quot;0.006408478376441764&quot;],[&quot;1998&quot;,&quot;0.004603504603504604&quot;],[&quot;1999&quot;,&quot;0.020339822574682018&quot;],[&quot;2000&quot;,&quot;0.02390001726336658&quot;],[&quot;2001&quot;,&quot;0.033061101028433154&quot;],[&quot;2002&quot;,&quot;0.0069179420396158035&quot;],[&quot;2003&quot;,&quot;0.015264200321996267&quot;],[&quot;2004&quot;,&quot;0.018651598543720636&quot;],[&quot;2005&quot;,&quot;0.017248129815041844&quot;],[&quot;2006&quot;,&quot;0.037821904142172826&quot;],[&quot;2007&quot;,&quot;0.014971061298954735&quot;],[&quot;2008&quot;,&quot;0.11486093854980353&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/pollackunpubl1">Pollackunpubl1</a></td>
+          <td><a href="/trends/3538">Details</a></td>
+        </tr>
+        <tr>
+          <td>North Gulf of Mexico (USA)</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;2009&quot;,&quot;0.07684711540350905&quot;],[&quot;2010&quot;,&quot;0.017297477504624095&quot;],[&quot;2011&quot;,&quot;0.018167757584256563&quot;],[&quot;2012&quot;,&quot;0.07647253689883408&quot;],[&quot;2013&quot;,&quot;0.03180914512922465&quot;],[&quot;2014&quot;,&quot;0.032108689718854805&quot;],[&quot;2015&quot;,&quot;0.027995107542855734&quot;],[&quot;2016&quot;,&quot;0.010900976112848815&quot;],[&quot;2017&quot;,&quot;0.013190355580842783&quot;],[&quot;2018&quot;,&quot;0.017360576246077637&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/pollackunpubl1">Pollackunpubl1</a></td>
+          <td><a href="/trends/3539">Details</a></td>
+        </tr>
+        <tr>
+          <td>Brownsville, TX to the Florida Keys, FL (USA)</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1995&quot;,&quot;0.100507605&quot;],[&quot;1996&quot;,&quot;0.316284065&quot;],[&quot;1997&quot;,&quot;0.319678887&quot;],[&quot;1999&quot;,&quot;0.450184349&quot;],[&quot;2000&quot;,&quot;0.411042292&quot;],[&quot;2001&quot;,&quot;0.768478725&quot;],[&quot;2002&quot;,&quot;0.428289871&quot;],[&quot;2003&quot;,&quot;1.233162176&quot;],[&quot;2004&quot;,&quot;0.907510593&quot;],[&quot;2005&quot;,&quot;0.789681001&quot;],[&quot;2006&quot;,&quot;0.884427328&quot;],[&quot;2007&quot;,&quot;0.580516729&quot;],[&quot;2008&quot;,&quot;0.775124158&quot;],[&quot;2009&quot;,&quot;1.091132652&quot;],[&quot;2010&quot;,&quot;0.889681386&quot;],[&quot;2011&quot;,&quot;0.563291436&quot;],[&quot;2012&quot;,&quot;0.734407647&quot;],[&quot;2013&quot;,&quot;0.379747074&quot;],[&quot;2014&quot;,&quot;0.449753728&quot;],[&quot;2015&quot;,&quot;0.370159559&quot;],[&quot;2016&quot;,&quot;0.307905011&quot;],[&quot;2017&quot;,&quot;0.466870299&quot;],[&quot;2018&quot;,&quot;0.579070988&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/pollackunpubl2">Pollackunpubl2</a></td>
+          <td><a href="/trends/3540">Details</a></td>
+        </tr>
+        <tr>
+          <td>Northwest Atlantic</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1950&quot;,&quot;766724&quot;],[&quot;1951&quot;,&quot;766564&quot;],[&quot;1952&quot;,&quot;762963&quot;],[&quot;1953&quot;,&quot;756781&quot;],[&quot;1954&quot;,&quot;748633&quot;],[&quot;1955&quot;,&quot;738943&quot;],[&quot;1956&quot;,&quot;727903&quot;],[&quot;1957&quot;,&quot;715677&quot;],[&quot;1958&quot;,&quot;702472&quot;],[&quot;1959&quot;,&quot;688452&quot;],[&quot;1960&quot;,&quot;673780&quot;],[&quot;1961&quot;,&quot;658607&quot;],[&quot;1962&quot;,&quot;643041&quot;],[&quot;1963&quot;,&quot;627182&quot;],[&quot;1964&quot;,&quot;611109&quot;],[&quot;1965&quot;,&quot;594920&quot;],[&quot;1966&quot;,&quot;578675&quot;],[&quot;1967&quot;,&quot;562422&quot;],[&quot;1968&quot;,&quot;546211&quot;],[&quot;1969&quot;,&quot;530082&quot;],[&quot;1970&quot;,&quot;514087&quot;],[&quot;1971&quot;,&quot;498229&quot;],[&quot;1972&quot;,&quot;482556&quot;],[&quot;1973&quot;,&quot;467073&quot;],[&quot;1974&quot;,&quot;446764&quot;],[&quot;1975&quot;,&quot;434027&quot;],[&quot;1976&quot;,&quot;432091&quot;],[&quot;1977&quot;,&quot;424020&quot;],[&quot;1978&quot;,&quot;411872&quot;],[&quot;1979&quot;,&quot;393531&quot;],[&quot;1980&quot;,&quot;379341&quot;],[&quot;1981&quot;,&quot;391374&quot;],[&quot;1982&quot;,&quot;390594&quot;],[&quot;1983&quot;,&quot;389337&quot;],[&quot;1984&quot;,&quot;375512&quot;],[&quot;1985&quot;,&quot;376045&quot;],[&quot;1986&quot;,&quot;376730&quot;],[&quot;1987&quot;,&quot;371063&quot;],[&quot;1988&quot;,&quot;349847&quot;],[&quot;1989&quot;,&quot;346211&quot;],[&quot;1990&quot;,&quot;348786&quot;],[&quot;1991&quot;,&quot;345704&quot;],[&quot;1992&quot;,&quot;340468&quot;],[&quot;1993&quot;,&quot;330704&quot;],[&quot;1994&quot;,&quot;321217&quot;],[&quot;1995&quot;,&quot;309360&quot;],[&quot;1996&quot;,&quot;298281&quot;],[&quot;1997&quot;,&quot;288870&quot;],[&quot;1998&quot;,&quot;278588&quot;],[&quot;1999&quot;,&quot;271164&quot;],[&quot;2000&quot;,&quot;270706&quot;],[&quot;2001&quot;,&quot;268178&quot;],[&quot;2002&quot;,&quot;266850&quot;],[&quot;2003&quot;,&quot;256555&quot;],[&quot;2004&quot;,&quot;256977&quot;],[&quot;2005&quot;,&quot;252520&quot;],[&quot;2006&quot;,&quot;243832&quot;],[&quot;2007&quot;,&quot;225340&quot;],[&quot;2008&quot;,&quot;225949&quot;],[&quot;2009&quot;,&quot;232839&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/sedar2011">SEDAR2011</a></td>
+          <td><a href="/trends/3541">Details</a></td>
+        </tr>
+        <tr>
+          <td>Northwest Atlantic</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1950&quot;,&quot;2211819&quot;],[&quot;1951&quot;,&quot;2211571&quot;],[&quot;1952&quot;,&quot;2210777&quot;],[&quot;1953&quot;,&quot;2209368&quot;],[&quot;1954&quot;,&quot;2207338&quot;],[&quot;1955&quot;,&quot;2204701&quot;],[&quot;1956&quot;,&quot;2201464&quot;],[&quot;1957&quot;,&quot;2197698&quot;],[&quot;1958&quot;,&quot;2193420&quot;],[&quot;1959&quot;,&quot;2188637&quot;],[&quot;1960&quot;,&quot;2183415&quot;],[&quot;1961&quot;,&quot;2177769&quot;],[&quot;1962&quot;,&quot;2171733&quot;],[&quot;1963&quot;,&quot;2165358&quot;],[&quot;1964&quot;,&quot;2158650&quot;],[&quot;1965&quot;,&quot;2151620&quot;],[&quot;1966&quot;,&quot;2144341&quot;],[&quot;1967&quot;,&quot;2136798&quot;],[&quot;1968&quot;,&quot;2129024&quot;],[&quot;1969&quot;,&quot;2121039&quot;],[&quot;1970&quot;,&quot;2112864&quot;],[&quot;1971&quot;,&quot;2104505&quot;],[&quot;1972&quot;,&quot;2095995&quot;],[&quot;1973&quot;,&quot;2087310&quot;],[&quot;1974&quot;,&quot;2081214&quot;],[&quot;1975&quot;,&quot;2076743&quot;],[&quot;1976&quot;,&quot;2074421&quot;],[&quot;1977&quot;,&quot;2072355&quot;],[&quot;1978&quot;,&quot;2070239&quot;],[&quot;1979&quot;,&quot;2067358&quot;],[&quot;1980&quot;,&quot;2064653&quot;],[&quot;1981&quot;,&quot;2065295&quot;],[&quot;1982&quot;,&quot;2062891&quot;],[&quot;1983&quot;,&quot;2058266&quot;],[&quot;1984&quot;,&quot;2050944&quot;],[&quot;1985&quot;,&quot;2037181&quot;],[&quot;1986&quot;,&quot;2025589&quot;],[&quot;1987&quot;,&quot;2012649&quot;],[&quot;1988&quot;,&quot;1989689&quot;],[&quot;1989&quot;,&quot;1931478&quot;],[&quot;1990&quot;,&quot;1891020&quot;],[&quot;1991&quot;,&quot;1826286&quot;],[&quot;1992&quot;,&quot;1764621&quot;],[&quot;1993&quot;,&quot;1689587&quot;],[&quot;1994&quot;,&quot;1609464&quot;],[&quot;1995&quot;,&quot;1519024&quot;],[&quot;1996&quot;,&quot;1456967&quot;],[&quot;1997&quot;,&quot;1385897&quot;],[&quot;1998&quot;,&quot;1240129&quot;],[&quot;1999&quot;,&quot;1189079&quot;],[&quot;2000&quot;,&quot;1128577&quot;],[&quot;2001&quot;,&quot;968096&quot;],[&quot;2002&quot;,&quot;884109&quot;],[&quot;2003&quot;,&quot;816078&quot;],[&quot;2004&quot;,&quot;745872&quot;],[&quot;2005&quot;,&quot;725351&quot;],[&quot;2006&quot;,&quot;719728&quot;],[&quot;2007&quot;,&quot;701842&quot;],[&quot;2008&quot;,&quot;681761&quot;],[&quot;2009&quot;,&quot;644442&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>kg</td>
+            <td><a href="/references/sedar2011">SEDAR2011</a></td>
+          <td><a href="/trends/3542">Details</a></td>
+        </tr>
+        <tr>
+          <td>North Gulf of Mexico</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1950&quot;,&quot;766724&quot;],[&quot;1951&quot;,&quot;766564&quot;],[&quot;1952&quot;,&quot;762963&quot;],[&quot;1953&quot;,&quot;756781&quot;],[&quot;1954&quot;,&quot;748633&quot;],[&quot;1955&quot;,&quot;738943&quot;],[&quot;1956&quot;,&quot;727903&quot;],[&quot;1957&quot;,&quot;715677&quot;],[&quot;1958&quot;,&quot;702472&quot;],[&quot;1959&quot;,&quot;688452&quot;],[&quot;1960&quot;,&quot;673780&quot;],[&quot;1961&quot;,&quot;658607&quot;],[&quot;1962&quot;,&quot;643041&quot;],[&quot;1963&quot;,&quot;627182&quot;],[&quot;1964&quot;,&quot;611109&quot;],[&quot;1965&quot;,&quot;594920&quot;],[&quot;1966&quot;,&quot;578675&quot;],[&quot;1967&quot;,&quot;562422&quot;],[&quot;1968&quot;,&quot;546211&quot;],[&quot;1969&quot;,&quot;530082&quot;],[&quot;1970&quot;,&quot;514087&quot;],[&quot;1971&quot;,&quot;498229&quot;],[&quot;1972&quot;,&quot;482556&quot;],[&quot;1973&quot;,&quot;467073&quot;],[&quot;1974&quot;,&quot;446764&quot;],[&quot;1975&quot;,&quot;434027&quot;],[&quot;1976&quot;,&quot;432091&quot;],[&quot;1977&quot;,&quot;424020&quot;],[&quot;1978&quot;,&quot;411872&quot;],[&quot;1979&quot;,&quot;393531&quot;],[&quot;1980&quot;,&quot;379341&quot;],[&quot;1981&quot;,&quot;391374&quot;],[&quot;1982&quot;,&quot;390594&quot;],[&quot;1983&quot;,&quot;389337&quot;],[&quot;1984&quot;,&quot;375512&quot;],[&quot;1985&quot;,&quot;376045&quot;],[&quot;1986&quot;,&quot;376730&quot;],[&quot;1987&quot;,&quot;371063&quot;],[&quot;1988&quot;,&quot;349847&quot;],[&quot;1989&quot;,&quot;346211&quot;],[&quot;1990&quot;,&quot;348786&quot;],[&quot;1991&quot;,&quot;345704&quot;],[&quot;1992&quot;,&quot;340468&quot;],[&quot;1993&quot;,&quot;330704&quot;],[&quot;1994&quot;,&quot;321217&quot;],[&quot;1995&quot;,&quot;309360&quot;],[&quot;1996&quot;,&quot;298281&quot;],[&quot;1997&quot;,&quot;288870&quot;],[&quot;1998&quot;,&quot;278588&quot;],[&quot;1999&quot;,&quot;271164&quot;],[&quot;2000&quot;,&quot;270706&quot;],[&quot;2001&quot;,&quot;268178&quot;],[&quot;2002&quot;,&quot;266850&quot;],[&quot;2003&quot;,&quot;256555&quot;],[&quot;2004&quot;,&quot;256977&quot;],[&quot;2005&quot;,&quot;252520&quot;],[&quot;2006&quot;,&quot;243832&quot;],[&quot;2007&quot;,&quot;225340&quot;],[&quot;2008&quot;,&quot;225949&quot;],[&quot;2009&quot;,&quot;232839&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/sedar2011a">sedar2011a</a></td>
+          <td><a href="/trends/3543">Details</a></td>
+        </tr>
+        <tr>
+          <td>North Gulf of Mexico</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1950&quot;,&quot;3558511&quot;],[&quot;1951&quot;,&quot;3558126&quot;],[&quot;1952&quot;,&quot;3549324&quot;],[&quot;1953&quot;,&quot;3531078&quot;],[&quot;1954&quot;,&quot;3503310&quot;],[&quot;1955&quot;,&quot;3466572&quot;],[&quot;1956&quot;,&quot;3421614&quot;],[&quot;1957&quot;,&quot;3369237&quot;],[&quot;1958&quot;,&quot;3310397&quot;],[&quot;1959&quot;,&quot;3245996&quot;],[&quot;1960&quot;,&quot;3176927&quot;],[&quot;1961&quot;,&quot;3104009&quot;],[&quot;1962&quot;,&quot;3027978&quot;],[&quot;1963&quot;,&quot;2949519&quot;],[&quot;1964&quot;,&quot;2869193&quot;],[&quot;1965&quot;,&quot;2787614&quot;],[&quot;1966&quot;,&quot;2705231&quot;],[&quot;1967&quot;,&quot;2622414&quot;],[&quot;1968&quot;,&quot;2539545&quot;],[&quot;1969&quot;,&quot;2456945&quot;],[&quot;1970&quot;,&quot;2374864&quot;],[&quot;1971&quot;,&quot;2293491&quot;],[&quot;1972&quot;,&quot;2213062&quot;],[&quot;1973&quot;,&quot;2133689&quot;],[&quot;1974&quot;,&quot;2043438&quot;],[&quot;1975&quot;,&quot;1967550&quot;],[&quot;1976&quot;,&quot;1921700&quot;],[&quot;1977&quot;,&quot;1874381&quot;],[&quot;1978&quot;,&quot;1821964&quot;],[&quot;1979&quot;,&quot;1753167&quot;],[&quot;1980&quot;,&quot;1685972&quot;],[&quot;1981&quot;,&quot;1679606&quot;],[&quot;1982&quot;,&quot;1664351&quot;],[&quot;1983&quot;,&quot;1654156&quot;],[&quot;1984&quot;,&quot;1569868&quot;],[&quot;1985&quot;,&quot;1571612&quot;],[&quot;1986&quot;,&quot;1567820&quot;],[&quot;1987&quot;,&quot;1549296&quot;],[&quot;1988&quot;,&quot;1447670&quot;],[&quot;1989&quot;,&quot;1405305&quot;],[&quot;1990&quot;,&quot;1408294&quot;],[&quot;1991&quot;,&quot;1401434&quot;],[&quot;1992&quot;,&quot;1391889&quot;],[&quot;1993&quot;,&quot;1350454&quot;],[&quot;1994&quot;,&quot;1303993&quot;],[&quot;1995&quot;,&quot;1225464&quot;],[&quot;1996&quot;,&quot;1159702&quot;],[&quot;1997&quot;,&quot;1123871&quot;],[&quot;1998&quot;,&quot;1088245&quot;],[&quot;1999&quot;,&quot;1061219&quot;],[&quot;2000&quot;,&quot;1062243&quot;],[&quot;2001&quot;,&quot;1038125&quot;],[&quot;2002&quot;,&quot;1027204&quot;],[&quot;2003&quot;,&quot;983629&quot;],[&quot;2004&quot;,&quot;984202&quot;],[&quot;2005&quot;,&quot;963575&quot;],[&quot;2006&quot;,&quot;915706&quot;],[&quot;2007&quot;,&quot;828207&quot;],[&quot;2008&quot;,&quot;838290&quot;],[&quot;2009&quot;,&quot;873083&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>kg</td>
+            <td><a href="/references/sedar2011a">sedar2011a</a></td>
+          <td><a href="/trends/3544">Details</a></td>
+        </tr>
+    </tbody>
+  </table>
+
+
+  <h4 class='subtitle is-4'>Group Trends</h2>
+  
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th></th>
+        <th>Unit</th>
+          <th>Reference</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>Queensland east coastline, Australia</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1963&quot;,&quot;18.364221556248&quot;],[&quot;1964&quot;,&quot;16.7151766797256&quot;],[&quot;1965&quot;,&quot;15.2388171048312&quot;],[&quot;1966&quot;,&quot;13.9484433682756&quot;],[&quot;1967&quot;,&quot;12.8582256572468&quot;],[&quot;1968&quot;,&quot;11.9229933028387&quot;],[&quot;1969&quot;,&quot;11.0727820715585&quot;],[&quot;1970&quot;,&quot;10.3926130865344&quot;],[&quot;1971&quot;,&quot;9.74078447588638&quot;],[&quot;1972&quot;,&quot;9.20231736274229&quot;],[&quot;1973&quot;,&quot;8.74887137272622&quot;],[&quot;1974&quot;,&quot;8.38044650583816&quot;],[&quot;1975&quot;,&quot;7.92700051582209&quot;],[&quot;1976&quot;,&quot;7.60108621049804&quot;],[&quot;1977&quot;,&quot;7.28934209236199&quot;],[&quot;1978&quot;,&quot;7.06261909735395&quot;],[&quot;1979&quot;,&quot;6.82172591515792&quot;],[&quot;1980&quot;,&quot;6.63751348171389&quot;],[&quot;1981&quot;,&quot;6.43913086108186&quot;],[&quot;1982&quot;,&quot;6.29742898920183&quot;],[&quot;1983&quot;,&quot;6.15572711732181&quot;],[&quot;1984&quot;,&quot;6.04236561981779&quot;],[&quot;1985&quot;,&quot;5.90066374793777&quot;],[&quot;1986&quot;,&quot;5.80147243762176&quot;],[&quot;1987&quot;,&quot;5.70228112730574&quot;],[&quot;1988&quot;,&quot;5.56057925542572&quot;],[&quot;1989&quot;,&quot;5.4755581322977&quot;],[&quot;1990&quot;,&quot;5.34802644760568&quot;],[&quot;1991&quot;,&quot;5.23377824765428&quot;],[&quot;1992&quot;,&quot;5.09251972699795&quot;],[&quot;1993&quot;,&quot;4.93709101915362&quot;],[&quot;1994&quot;,&quot;4.8520698960256&quot;],[&quot;1995&quot;,&quot;4.71036802414558&quot;],[&quot;1996&quot;,&quot;4.54032577788956&quot;],[&quot;1997&quot;,&quot;4.39862390600953&quot;],[&quot;1998&quot;,&quot;4.25692203412951&quot;],[&quot;1999&quot;,&quot;4.11522016224949&quot;],[&quot;2000&quot;,&quot;3.97351829036946&quot;],[&quot;2001&quot;,&quot;3.83181641848944&quot;],[&quot;2002&quot;,&quot;3.69011454660942&quot;],[&quot;2003&quot;,&quot;3.5767530491054&quot;],[&quot;2004&quot;,&quot;3.46339155160139&quot;],[&quot;2005&quot;,&quot;3.36420024128537&quot;],[&quot;2006&quot;,&quot;3.35003005409737&quot;],[&quot;2007&quot;,&quot;3.29334930534536&quot;],[&quot;2008&quot;,&quot;3.29334930534536&quot;],[&quot;2009&quot;,&quot;3.29334930534536&quot;],[&quot;2010&quot;,&quot;3.32168967972136&quot;],[&quot;2011&quot;,&quot;3.35003005409737&quot;],[&quot;2012&quot;,&quot;3.36420024128537&quot;],[&quot;2013&quot;,&quot;3.35003005409737&quot;],[&quot;2014&quot;,&quot;3.35003005409737&quot;],[&quot;2015&quot;,&quot;3.29334930534536&quot;],[&quot;2016&quot;,&quot;3.29334930534536&quot;],[&quot;2017&quot;,&quot;3.22249836940535&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/roff2018">Roff2018</a></td>
+          <td><a href="/trends/3642">Details</a></td>
+        </tr>
+        <tr>
+          <td>Queensland east coastline, Australia</td>
+          <td width="40%">
+            <div data-react-class="TrendChart" data-react-props="{&quot;observations&quot;:[[&quot;1963&quot;,&quot;2.32620453441709&quot;],[&quot;1964&quot;,&quot;2.12275899087493&quot;],[&quot;1965&quot;,&quot;1.94646116095391&quot;],[&quot;1966&quot;,&quot;1.77653554175293&quot;],[&quot;1967&quot;,&quot;1.62785062495207&quot;],[&quot;1968&quot;,&quot;1.51315083199141&quot;],[&quot;1969&quot;,&quot;1.40694731999079&quot;],[&quot;1970&quot;,&quot;1.30924008895023&quot;],[&quot;1971&quot;,&quot;1.24551798174986&quot;],[&quot;1972&quot;,&quot;1.16905145310942&quot;],[&quot;1973&quot;,&quot;1.11170155662909&quot;],[&quot;1974&quot;,&quot;1.06072387086879&quot;],[&quot;1975&quot;,&quot;1.0097461851085&quot;],[&quot;1976&quot;,&quot;0.965140710068245&quot;],[&quot;1977&quot;,&quot;0.924783375508012&quot;],[&quot;1978&quot;,&quot;0.890798251667816&quot;],[&quot;1979&quot;,&quot;0.861061268307644&quot;],[&quot;1980&quot;,&quot;0.841944636147534&quot;],[&quot;1981&quot;,&quot;0.818579863507399&quot;],[&quot;1982&quot;,&quot;0.801587301587301&quot;],[&quot;1983&quot;,&quot;0.780346599187178&quot;],[&quot;1984&quot;,&quot;0.759105896787056&quot;],[&quot;1985&quot;,&quot;0.748485545586994&quot;],[&quot;1986&quot;,&quot;0.733617053906908&quot;],[&quot;1987&quot;,&quot;0.720872632466834&quot;],[&quot;1988&quot;,&quot;0.708128211026761&quot;],[&quot;1989&quot;,&quot;0.691135649106662&quot;],[&quot;1990&quot;,&quot;0.678391227666589&quot;],[&quot;1991&quot;,&quot;0.665646806226515&quot;],[&quot;1992&quot;,&quot;0.644406103826392&quot;],[&quot;1993&quot;,&quot;0.625289471666282&quot;],[&quot;1994&quot;,&quot;0.614669120466221&quot;],[&quot;1995&quot;,&quot;0.593428418066098&quot;],[&quot;1996&quot;,&quot;0.574311785905988&quot;],[&quot;1997&quot;,&quot;0.559443294225902&quot;],[&quot;1998&quot;,&quot;0.542450732305804&quot;],[&quot;1999&quot;,&quot;0.521210029905681&quot;],[&quot;2000&quot;,&quot;0.506341538225596&quot;],[&quot;2001&quot;,&quot;0.49147304654551&quot;],[&quot;2002&quot;,&quot;0.470232344145387&quot;],[&quot;2003&quot;,&quot;0.448991641745263&quot;],[&quot;2004&quot;,&quot;0.440495360785214&quot;],[&quot;2005&quot;,&quot;0.425626869105129&quot;],[&quot;2006&quot;,&quot;0.419254658385092&quot;],[&quot;2007&quot;,&quot;0.415006517905067&quot;],[&quot;2008&quot;,&quot;0.415006517905067&quot;],[&quot;2009&quot;,&quot;0.419254658385092&quot;],[&quot;2010&quot;,&quot;0.419254658385092&quot;],[&quot;2011&quot;,&quot;0.419254658385092&quot;],[&quot;2012&quot;,&quot;0.423502798865116&quot;],[&quot;2013&quot;,&quot;0.421378728625104&quot;],[&quot;2014&quot;,&quot;0.421312271553816&quot;],[&quot;2015&quot;,&quot;0.419254658385092&quot;],[&quot;2016&quot;,&quot;0.417329959358944&quot;],[&quot;2017&quot;,&quot;0.40863430718503&quot;]]}" data-react-cache-id="TrendChart-0"></div>
+          </td>
+          <td>individual</td>
+            <td><a href="/references/roff2018">Roff2018</a></td>
+          <td><a href="/trends/3643">Details</a></td>
+        </tr>
+    </tbody>
+  </table>
+
+
+<h3 class="subtitle is-3">Contributors to the data of this species</h3>
+<div class="content">
+  <ul>
+      <li>cmull</li>
+      <li>lsaldana</li>
+      <li>egarcia</li>
+      <li>Simon Dedman</li>
+      <li>Nathan Pacoureau</li>
+  </ul>
+</div>
+
+      </div>
+    </section>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141899264-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-141899264-2');
+        </script>
+  </body>
+</html>

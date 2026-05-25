@@ -1,0 +1,367 @@
+---
+title: "Ecological workflows with Sharkipedia data"
+author: "Pablo Fuenzalida"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Ecological workflows with Sharkipedia data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7.5,
+  fig.height = 5,
+  fig.align = "center",
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r load}
+library(sharkipediaR)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(plotly)
+
+ex <- example_carcharhinus()
+traits <- ex$traits
+trends <- ex$trends
+meta <- ex$species_meta
+
+theme_shark <- function() {
+  theme_minimal(base_size = 12) +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(face = "bold", size = 13),
+      plot.subtitle = element_text(colour = "grey30", size = 10),
+      strip.text = element_text(face = "bold")
+    )
+}
+
+# Wrap ggplot objects for interactive tooltips in HTML vignettes / pkgdown
+as_interactive <- function(p) {
+  plotly::ggplotly(p, tooltip = "all") %>%
+    plotly::layout(hovermode = "closest")
+}
+```
+
+## The scientific case
+
+Chondrichthyans are among the most threatened vertebrate lineages. Comparative traits (maturity, growth, fecundity) and standardized abundance trends are the currency of:
+
+- **Extinction-risk assessment** (IUCN Red List criteria tied to population reduction),
+- **Data-limited fisheries methods** (life-history priors for $r$, $F_{MSY}$, generation time),
+- **Macroecology** (allometric and life-history invariants across species).
+
+Sharkipedia centralizes those measurements with traceable references. **sharkipediaR** lets you treat Sharkipedia like any other data API in R — filter, summarize, and plot with familiar **`%>%`** pipes and interactive **plotly** charts in this vignette.
+
+Throughout this vignette we use **`example_carcharhinus()`** (blacknose shark, *Carcharhinus acronotus*), a data-rich coastal species with both traits and Northwest Atlantic trends. Live extraction is identical — swap in `sp_traits()` / `sp_trends()` when you are online.
+
+---
+
+## `sp_species()` — taxonomy for comparative frameworks
+
+**File:** `R/sp_species.R`
+
+`sp_species()` returns a **one-row tibble** with taxonomic ranks parsed from the species page header, plus provenance.
+
+**Pipeline:** `resolve_species_url()` → `fetch_page()` → `parse_taxonomy()` → add `source_url` and `retrieved_at`.
+
+```{r species-show}
+meta
+```
+
+Use this to join trait or trend tables to order/family for comparative plots across many species (after a batch `sp_traits()` call).
+
+**Live equivalent:**
+
+```{r species-live, eval = FALSE}
+sp_species("Carcharhinus acronotus")
+```
+
+---
+
+## `sp_traits()` — life-history measurements in long format
+
+**File:** `R/sp_traits.R`
+
+`sp_traits()` is the workhorse for ecology. It returns one row per **measurement** with columns:
+
+| Column | Meaning |
+|--------|---------|
+| `trait_group` | Sharkipedia grouping (Age, Length, Reproduction, …) |
+| `trait_name` | Trait label (e.g. `Amat50`, `Linf`) |
+| `value` | Reported value (character; coerce with `as.numeric()` when appropriate) |
+| `standard` | Units or category (e.g. `Year`, `cm`) |
+| `value_type` | Often `mean`, `median`, etc. |
+| `sex` | `Male`, `Female`, `Pooled`, … |
+| `location` | Geographic or study location |
+| `reference` | Sharkipedia reference ID |
+| `source_url`, `retrieved_at` | Reproducibility |
+
+**Pipeline:** `fetch_page()` → `parse_traits_tables()` → `clean_traits()` → `validate_traits()`.
+
+### How many traits, and from which groups?
+
+```{r trait-inventory}
+traits %>%
+  count(trait_group, sort = TRUE)
+```
+
+### Plot 1 — Age at 50% maturity by sex
+
+A classic input for generation length and demographic models: **age at 50% maturity (`Amat50`)** by sex.
+
+```{r plot-amat50}
+amat50 <- traits %>%
+  filter(trait_name == "Amat50") %>%
+  mutate(value_num = as.numeric(value))
+
+p_amat50 <- ggplot(amat50, aes(
+  x = sex, y = value_num, fill = sex,
+  text = paste0(
+    "Reference: ", reference,
+    "<br>Location: ", location,
+    "<br>Value: ", value_num, " years"
+  )
+)) +
+  geom_col(width = 0.6, alpha = 0.85) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(
+    title = "Age at 50% maturity — Carcharhinus acronotus",
+    subtitle = "Hover for Sharkipedia reference and location",
+    x = NULL,
+    y = "Age (years)",
+    fill = "Sex",
+    caption = meta$source_url[[1]]
+  ) +
+  theme_shark() +
+  theme(legend.position = "none")
+
+as_interactive(p_amat50)
+```
+
+Each bar is traceable to a **`reference`** ID on Sharkipedia — exactly what you want in a methods paragraph.
+
+### Plot 2 — Distribution of numeric traits across groups
+
+```{r plot-trait-groups}
+numeric_traits <- traits %>%
+  mutate(value_num = suppressWarnings(as.numeric(value))) %>%
+  filter(!is.na(value_num), trait_group %in% c("Age", "Length", "Reproduction"))
+
+p_traits <- ggplot(numeric_traits, aes(
+  x = trait_group, y = value_num, fill = trait_group,
+  text = paste0(
+    trait_name, " (", sex, ")",
+    "<br>", value_num, " ", standard,
+    "<br>", location
+  )
+)) +
+  geom_boxplot(outlier.shape = 21, alpha = 0.7) +
+  scale_y_continuous(trans = "log10", labels = scales::label_number()) +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(
+    title = "Numeric life-history measurements by trait group",
+    subtitle = "Hover points for trait name, sex, and location",
+    x = NULL,
+    y = "Reported value (log scale)",
+    fill = "Group",
+    caption = "Example data: example_carcharhinus()"
+  ) +
+  theme_shark() +
+  theme(legend.position = "none")
+
+as_interactive(p_traits)
+```
+
+### dplyr workflow — matching the README blueprint
+
+```{r dplyr-linf, eval = FALSE}
+# With live data:
+# traits_live <- sp_traits("Aetobatus narinari")
+
+traits %>%
+  filter(trait_name == "Linf") %>%
+  summarise(
+    n = n(),
+    mean_linf = mean(as.numeric(value), na.rm = TRUE),
+    .by = sex
+  )
+```
+
+**Batch species:** pass a character vector; `sp_traits()` row-binds results and adds `species_input`.
+
+```{r batch-traits, eval = FALSE}
+sp_traits(c("Carcharhinus acronotus", "Alopias vulpinus"))
+```
+
+---
+
+## `sp_trends()` — population trajectories for assessment & Red List thinking
+
+**File:** `R/sp_trends.R`
+
+Trend data are embedded in species pages as JSON inside `data-react-props` (server-rendered). `parse_trends_tables()` expands each trend to long format: **`year`**, **`value`**, **`location`**, **`unit`**, **`reference`**, **`trend_id`**.
+
+**Pipeline:** `fetch_page()` → `parse_trends_tables()` → `clean_trends()` → `validate_trends()`.
+
+```{r trends-preview}
+trends %>%
+  distinct(location, unit, reference, trend_id) %>%
+  arrange(location)
+```
+
+### Plot 3 — Standardized index through time (single series)
+
+Many Sharkipedia trends are **standardized indices** or relative abundances — ideal for showing directional change when absolute scale varies by survey.
+
+```{r plot-one-trend}
+one_trend <- trends %>%
+  filter(trend_id == "3537")
+
+p_trend <- ggplot(one_trend, aes(
+  x = year, y = value,
+  text = paste0(
+    "Year: ", year,
+    "<br>Index: ", round(value, 3),
+    "<br>Reference: ", reference,
+    "<br>", location
+  )
+)) +
+  geom_line(linewidth = 0.9, colour = "#1f4e79") +
+  geom_point(size = 1.8, colour = "#1f4e79") +
+  labs(
+    title = "Population trend — North Carolina to Brownsville (USA)",
+    subtitle = "Hover points for year, index value, and reference",
+    x = "Year",
+    y = "Index value",
+    caption = one_trend$trend_url[[1]]
+  ) +
+  theme_shark()
+
+as_interactive(p_trend)
+```
+
+In a Red List or ERAs context, you would align such series to time windows required by criteria A2/A4, document the **`reference`**, and keep the **`retrieved_at`** stamp from `sp_trends()`.
+
+### Plot 4 — Multiple locations, faceted
+
+```{r plot-facet-trends}
+trend_summary <- trends %>%
+  group_by(location, unit, trend_id) %>%
+  summarise(
+    n_years = n(),
+    year_min = min(year),
+    year_max = max(year),
+    .groups = "drop"
+  ) %>%
+  filter(n_years >= 10) %>%
+  slice_head(n = 6)
+
+plot_df <- trends %>%
+  semi_join(trend_summary, by = "trend_id")
+
+p_facet <- ggplot(plot_df, aes(
+  x = year, y = value,
+  colour = location,
+  text = paste0(
+    location,
+    "<br>Year: ", year,
+    "<br>Value: ", round(value, 3),
+    "<br>Reference: ", reference,
+    "<br>Unit: ", unit
+  )
+)) +
+  geom_line(linewidth = 0.7) +
+  geom_point(size = 1.2, alpha = 0.7) +
+  labs(
+    title = "Multiple abundance trends for one species",
+    subtitle = "Interactive: zoom, pan, and hover for metadata",
+    x = "Year",
+    y = "Value (units vary by series)",
+    colour = "Location",
+    caption = meta$source_url[[1]]
+  ) +
+  theme_shark() +
+  theme(legend.position = "bottom")
+
+as_interactive(p_facet)
+```
+
+**Live extraction:**
+
+```{r trends-live, eval = FALSE}
+sp_trends("Carcharhinus acronotus")
+```
+
+---
+
+## `sp_references()` — linking data to the literature graph
+
+**File:** `R/sp_references.R`
+
+Collects unique `/references/...` links from trait and trend tables on the species page.
+
+```{r refs}
+ex$references %>%
+  slice_head(n = 8)
+```
+
+Join `traits$reference` to `references$reference_id` for bibliographic workflows (DOI lookup, `bibtex` keys).
+
+---
+
+## Discovery: `sp_species_urls()` and `sp_search()`
+
+Before batch analysis, discover what Sharkipedia hosts:
+
+```{r index-sample}
+ex$species_index %>%
+  slice_head(n = 6)
+```
+
+**`sp_species_urls()`** (`R/sp_species_urls.R`):
+
+- Default: first index page only (polite).
+- `all_pages = TRUE`: walks pagination (65+ pages) — use `max_pages` to cap load during development.
+
+**`sp_search()`** (`R/sp_search.R`):
+
+- Case-insensitive substring match on `species` or `slug`.
+- Pass a pre-built `index` to avoid re-downloading the full catalogue.
+
+```{r search-live, eval = FALSE}
+idx <- sp_species_urls(all_pages = TRUE, max_pages = 5)
+sp_search("Carcharhinus", index = idx)
+```
+
+---
+
+## Reproducibility checklist (workshop-ready)
+
+1. Record `packageVersion("sharkipediaR")` and `sessionInfo()`.
+2. Store `source_url` and `retrieved_at` from every `sp_*()` call.
+3. Archive raw outputs with `write_csv()` or `saveRDS()`.
+4. Prefer building a species list once with `sp_species_urls()` rather than repeated index scrapes.
+
+```{r reproducibility}
+sessionInfo()
+packageVersion("sharkipediaR")
+```
+
+---
+
+## What is next in your analysis?
+
+- Combine trait imputation with trends for data-poor relatives (Robin Hood / comparative approaches in the Dulvy tradition).
+- Scale to many species with **conservative** rate limits (sequential `sp_traits()` loops; parallel only with care).
+- Watch for Phase 4 functions (`sp_trait_catalogue()`, trait-centric queries) in future releases.
+
+For implementation details of every internal function, see the **Architecture and function reference** vignette.

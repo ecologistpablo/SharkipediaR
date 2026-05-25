@@ -1,0 +1,42 @@
+Package: sharkipediaR
+Title: Access Sharkipedia Trait and Trend Data
+Version: 0.1.0
+Authors@R: c(
+    person("Pablo", "Fuenzalida", email = "pablofuenzalida427@gmail.com",
+           role = c("aut", "cre"))
+  )
+Maintainer: Pablo Fuenzalida <pablofuenzalida427@gmail.com>
+Description: G'day mate! This is a tidyverse-oriented R client for publicly accessible Sharkipedia
+    life-history trait and population trend data. Provides polite HTML
+    retrieval, modular parsing, and reproducible ecological workflows.
+License: MIT + file LICENSE
+URL: https://github.com/ecologistpablo/SharkpediaR, https://ecologistpablo.github.io/SharkpediaR/
+BugReports: https://github.com/ecologistpablo/SharkpediaR/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    cli,
+    dplyr,
+    httr2,
+    jsonlite,
+    memoise,
+    purrr,
+    rlang,
+    rvest,
+    stringr,
+    tibble,
+    tidyr,
+    xml2
+Suggests:
+    ggplot2,
+    htmltools,
+    knitr,
+    pkgdown,
+    plotly,
+    rmarkdown,
+    scales,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+LazyData: true
