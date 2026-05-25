@@ -4,6 +4,9 @@
 [![pkgdown site](https://img.shields.io/badge/pkgdown-site-blue)](https://ecologistpablo.github.io/SharkpediaR/)
 <!-- badges: end -->
 
+<img width="588" height="178" alt="Screenshot 2026-05-25 at 11 56 07 pm" src="https://github.com/user-attachments/assets/3115f84d-6298-47eb-9d35-5baaccee27b8" />
+
+
 **sharkipediaR** is a tidyverse-oriented R package for [Sharkipedia](https://www.sharkipedia.org) — the open database of shark and ray life-history traits and population abundance trends ([Dulvy et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)). The package downloads public species pages politely, parses embedded HTML tables and trend series, and returns reproducible tibbles ready for your analyses.
 
 - **Site (vignettes & reference):** <https://ecologistpablo.github.io/SharkpediaR/>
