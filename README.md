@@ -7,7 +7,6 @@
 **sharkipediaR** is a tidyverse-oriented R client for [Sharkipedia](https://www.sharkipedia.org) — the open database of shark and ray life-history traits and population abundance trends ([Dulvy et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)). The package downloads public species pages politely, parses embedded HTML tables and trend series, and returns reproducible tibbles ready for `dplyr` and **ggplot2** / **plotly**.
 
 - **Site (vignettes & reference):** <https://ecologistpablo.github.io/SharkpediaR/>
-- **Source:** <https://github.com/ecologistpablo/SharkpediaR>
 
 ---
 
