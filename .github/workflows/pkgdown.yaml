@@ -1,0 +1,38 @@
+# Build and deploy pkgdown site (including vignettes) to gh-pages
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+name: pkgdown
+
+jobs:
+  pkgdown:
+    runs-on: macos-latest
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+      cancel-in-progress: true
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::pkgdown, local::.
+          needs: website
+
+      - name: Build example data for vignettes
+        run: Rscript data-raw/build-vignette-data.R
+
+      - uses: r-lib/actions/build-site@v2
+        if: github.event_name != 'pull_request'
+        with:
+          deploy: true

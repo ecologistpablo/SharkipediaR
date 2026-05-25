@@ -11,8 +11,9 @@ doc/
 Meta/
 *.tar.gz
 *.Rcheck/
-docs/
+# docs/ is committed optionally; pkgdown GHA deploys to gh-pages
 vignettes/*.html
+vignettes/*_files/
 vignettes/*.R
 .Rcache/
 local/

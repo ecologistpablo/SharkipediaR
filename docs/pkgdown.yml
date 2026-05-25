@@ -1,0 +1,8 @@
+pandoc: 3.9.0.2
+pkgdown: 2.1.0
+pkgdown_sha: ~
+articles:
+  architecture-and-functions: architecture-and-functions.html
+  ecological-workflows: ecological-workflows.html
+  sharkipediar: sharkipediar.html
+last_built: 2026-05-25T13:07Z

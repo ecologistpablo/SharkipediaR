@@ -1,4 +1,5 @@
 # Builds inst/extdata/carcharhinus_acronotus.rds for offline vignettes and examples.
+suppressPackageStartupMessages(library(dplyr))
 pkg_root <- if (file.exists("DESCRIPTION")) "." else ".."
 fixture <- function(name) {
   file.path(pkg_root, "tests", "testthat", "fixtures", name)

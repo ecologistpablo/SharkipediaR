@@ -15,18 +15,8 @@ repo:
 
 navbar:
   structure:
-    left:  [home, reference, articles, news]
+    left:  [home, reference, articles]
     right: [search, github]
-  components:
-    articles:
-      text: Articles
-      menu:
-      - text: Getting started
-        href: articles/sharkipediar.html
-      - text: Ecological workflows
-        href: articles/ecological-workflows.html
-      - text: Architecture & functions
-        href: articles/architecture-and-functions.html
 
 articles:
 - title: Documentation
