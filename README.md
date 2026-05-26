@@ -33,7 +33,7 @@ main branch:
 
 ## Overview
 
-**sharkipediaR** is a tidyverse-oriented R client for [Sharkipedia](https://www.sharkipedia.org) — the open database of shark, ray, and chimaera **life-history traits** and **population abundance trends** ([Dulvy et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)). The package downloads public species pages politely, parses embedded HTML tables and trend series, and returns reproducible tibbles ready for analysis and plotting.
+**sharkipediaR** is a tidyverse-oriented R client for [Sharkipedia](https://www.sharkipedia.org) — the open database of shark, ray, and chimaera **life-history traits** and **population abundance trends** ([Mull et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)). The package downloads public species pages politely, parses embedded HTML tables and trend series, and returns reproducible tibbles ready for analysis and plotting.
 
 It includes functions for:
 
