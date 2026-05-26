@@ -9,7 +9,7 @@
 
 **sharkipediaR** is a tidyverse-oriented R package for [Sharkipedia](https://www.sharkipedia.org) — the open database of shark and ray life-history traits and population abundance trends ([Dulvy et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)). The package downloads public species pages politely, parses embedded HTML tables and trend series, and returns reproducible tibbles ready for your analyses.
 
-- **Site (vignettes & reference):** <https://ecologistpablo.github.io/SharkpediaR/>
+- **Site (vignettes & reference):** <https://ecologistpablo.github.io/SharkipediaR/>
 
 ---
 
@@ -53,10 +53,10 @@ traits %>%
 
 | Resource | Description |
 |----------|-------------|
-| [Getting started](https://ecologistpablo.github.io/SharkpediaR/articles/sharkipediar.html) | Install, overview, workflow |
-| [Ecological workflows](https://ecologistpablo.github.io/SharkpediaR/articles/ecological-workflows.html) | Fisheries / conservation examples, interactive plots |
-| [Architecture & functions](https://ecologistpablo.github.io/SharkpediaR/articles/architecture-and-functions.html) | Full pipeline and internal parsers |
-| [Function reference](https://ecologistpablo.github.io/SharkpediaR/reference/index.html) | All exported functions |
+| [Getting started](https://ecologistpablo.github.io/SharkipediaR/articles/sharkipediar.html) | Install, overview, workflow |
+| [Ecological workflows](https://ecologistpablo.github.io/SharkipediaR/articles/ecological-workflows.html) | Fisheries / conservation examples, interactive plots |
+| [Architecture & functions](https://ecologistpablo.github.io/SharkipediaR/articles/architecture-and-functions.html) | Full pipeline and internal parsers |
+| [Function reference](https://ecologistpablo.github.io/SharkipediaR/reference/index.html) | All exported functions |
 
 In R: `utils::browseVignettes("sharkipediaR")`
 
