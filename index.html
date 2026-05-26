@@ -445,25 +445,10 @@
 <hr>
 </div>
 <div class="section level2">
-<h2 id="publishing-the-website">Publishing the website<a class="anchor" aria-label="anchor" href="#publishing-the-website"></a>
-</h2>
-<p>Vignettes are <strong>not</strong> shown on the GitHub repo README; they live on the pkgdown site under <strong>Articles</strong>.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pkgdown"</span>, <span class="st">"ggplot2"</span>, <span class="st">"plotly"</span>, <span class="st">"knitr"</span>, <span class="st">"rmarkdown"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/build-vignette-data.R"</span><span class="op">)</span></span>
-<span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">build_site</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/deploy_to_branch.html" class="external-link">deploy_to_branch</a></span><span class="op">(</span>branch <span class="op">=</span> <span class="st">"gh-pages"</span><span class="op">)</span>  <span class="co"># no git_user / repo_slug</span></span></code></pre></div>
-<p>Or: <code>Rscript scripts/deploy-pkgdown.R</code></p>
-<p><strong>If the site still looks old:</strong> your first deploy may have pushed an <strong>empty</strong> <code>gh-pages</code> (see terminal error). Re-run deploy above; then hard-refresh (Cmd+Shift+R). Check <code>git ls-remote --heads origin gh-pages</code> — latest commit should be recent, not <code>Initializing gh-pages branch</code>.</p>
-<p><strong>GitHub Pages:</strong> Settings → Pages → branch <strong><code>gh-pages</code></strong>, folder <strong><code>/ (root)</code></strong>.</p>
-<p>Vignettes: navbar <strong>Articles</strong>, not the home README.</p>
-<hr>
-</div>
-<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>If you use Sharkipedia data, cite the database (<a href="https://www.nature.com/articles/s41597-022-01655-1" class="external-link">Dulvy et al., 2022</a>) and record <code>source_url</code> / <code>retrieved_at</code> from this package.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"sharkipediaR"</span><span class="op">)</span> <span class="co"># after install</span></span></code></pre></div>
 <hr>
 </div>

@@ -296,34 +296,6 @@ charts.
 
 ------------------------------------------------------------------------
 
-## Publishing the website
-
-Vignettes are **not** shown on the GitHub repo README; they live on the
-pkgdown site under **Articles**.
-
-``` r
-
-install.packages(c("pkgdown", "ggplot2", "plotly", "knitr", "rmarkdown"))
-source("data-raw/build-vignette-data.R")
-pkgdown::build_site()
-pkgdown::deploy_to_branch(branch = "gh-pages")  # no git_user / repo_slug
-```
-
-Or: `Rscript scripts/deploy-pkgdown.R`
-
-**If the site still looks old:** your first deploy may have pushed an
-**empty** `gh-pages` (see terminal error). Re-run deploy above; then
-hard-refresh (Cmd+Shift+R). Check
-`git ls-remote --heads origin gh-pages` — latest commit should be
-recent, not `Initializing gh-pages branch`.
-
-**GitHub Pages:** Settings → Pages → branch **`gh-pages`**, folder
-**`/ (root)`**.
-
-Vignettes: navbar **Articles**, not the home README.
-
-------------------------------------------------------------------------
-
 ## Citation
 
 If you use Sharkipedia data, cite the database ([Dulvy et al.,
