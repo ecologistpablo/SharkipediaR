@@ -1,4 +1,5 @@
-# pkgdown site → gh-pages (https://ecologistpablo.github.io/SharkpediaR/)
+# Workflow from https://github.com/r-lib/actions/blob/v2-branch/examples/pkgdown.yaml
+# (build-site@v2 was removed from r-lib/actions)
 on:
   push:
     branches: [main, master]
@@ -7,14 +8,16 @@ on:
 
 name: pkgdown
 
+permissions: read-all
+
 jobs:
   pkgdown:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     concurrency:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
       cancel-in-progress: true
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
     steps:
@@ -31,11 +34,17 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
-      # Rebuild inst/extdata if fixtures changed (needs installed package)
       - name: Build vignette example data
         run: Rscript data-raw/build-vignette-data.R
 
-      - uses: r-lib/actions/build-site@v2
+      - name: Build site
+        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        shell: Rscript {0}
+
+      - name: Deploy to GitHub pages
         if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.6.4
         with:
-          deploy: true
+          clean: false
+          branch: gh-pages
+          folder: docs
