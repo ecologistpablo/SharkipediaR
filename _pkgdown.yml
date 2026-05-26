@@ -13,9 +13,12 @@ navbar:
   structure:
     left:  [home, reference, articles]
     right: [search, github]
+  components:
+    articles:
+      text: Tutorials
 
 articles:
-- title: Articles
+- title: Tutorials
   navbar: ~
   contents:
   - sharkipediar

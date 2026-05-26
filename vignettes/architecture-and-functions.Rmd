@@ -1,10 +1,10 @@
 ---
-title: "Package architecture and function reference"
+title: "Package architecture"
 author: "Pablo Fuenzalida"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Package architecture and function reference}
+  %\VignetteIndexEntry{Package architecture}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,432 +13,180 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 7,
-  fig.height = 4,
-  fig.align = "center"
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
-```{r load}
-library(sharkipediaR)
-library(dplyr)
 
-vignette_fixture <- function(name) {
-  path <- system.file("fixtures", name, package = "sharkipediaR")
-  if (!nzchar(path)) {
-    cli::cli_abort("Fixture not found: {name}")
-  }
-  path
-}
+## Start here if you are new
 
-doc <- xml2::read_html(vignette_fixture("carcharhinus_acronotus.html"))
-index_doc <- xml2::read_html(vignette_fixture("species_index_page1.html"))
-source_url <- "https://www.sharkipedia.org/species/carcharhinus-acronotus"
-retrieved_at <- as.POSIXct("2026-05-25 12:00:00", tz = "UTC")
-```
+**Sharkipedia** ([sharkipedia.org](https://www.sharkipedia.org)) is a website/database of shark and ray **life-history traits** and **population trends**, each tied to a literature reference.
 
-## Design philosophy
+**sharkipediaR** downloads public species pages, reads the HTML tables, and gives you clean R data frames. You do not need to know how the website is built.
 
-**sharkipediaR** follows a strict pipeline:
 
-```
-HTTP retrieval  →  HTML parsing  →  cleaning  →  validation  →  user-facing tibble
-(fetch.R)         (parse.R)        (clean.R)     (validate.R)   (sp_*.R)
-```
+## How the package is organised (one sentence)
 
-No step is allowed to “do everything.” That separation keeps the package maintainable when Sharkipedia’s HTML evolves.
+Each `sp_*()` function **fetches a page → parses tables → cleans names → checks columns → returns a tibble**. That split keeps the code maintainable when the website changes.
 
-```{r diagram, echo = FALSE, fig.cap = "Data flow for sp_traits()"}
-par(mar = c(0, 0, 0, 0))
-plot.new()
-text(0.5, 0.85, "sp_traits(species)", cex = 1.2, font = 2)
-arrows(0.5, 0.78, 0.5, 0.72, length = 0.1)
-text(0.5, 0.68, "resolve_species_url()  →  fetch_page()", cex = 0.95)
-arrows(0.5, 0.62, 0.5, 0.56, length = 0.1)
-text(0.5, 0.52, "parse_traits_tables()", cex = 0.95)
-arrows(0.5, 0.46, 0.5, 0.40, length = 0.1)
-text(0.5, 0.36, "clean_traits()  →  validate_traits()", cex = 0.95)
-```
 
 ---
 
-# `R/constants.R`
+## `sp_species_urls()` — find species web addresses
 
-| Object / function | Role |
-|-----------------|------|
-| `.sharkipedia_env` | Package-private environment storing last request time for rate limiting |
-| `sharkipedia_base_url()` | Returns `https://www.sharkipedia.org` |
-| `sharkipedia_user_agent()` | Identifies the client in HTTP headers (version + project URL) |
+**What it does:** Reads the [species index](https://www.sharkipedia.org/species) and returns names + URLs.
 
-These are internal but underpin polite scraping.
 
----
+**How to use:** Start here when you need a species list. Default = first page only (polite). Use `all_pages = TRUE` for the full catalogue (slow).
 
-# `R/utils.R`
 
-## `rate_limit_pause(min_gap = 0.5)`
-
-Waits until at least `min_gap` seconds have elapsed since the last request, plus a small random jitter (`runif(0, 0.3)`). Called automatically by `fetch_page()`.
-
-## `species_name_to_slug(name)`
-
-Converts `"Carcharhinus acronotus"` → `"carcharhinus-acronotus"` (lowercase, spaces to hyphens).
-
-## `species_name_to_url(name)`
-
-Builds the full species page URL from a scientific name.
-
-```{r utils-url}
-sharkipediaR:::species_name_to_url("Carcharhinus acronotus")
-```
-
-## `normalize_sharkipedia_url(url)`
-
-Accepts:
-
-- full URLs,
-- relative paths (`/species/...`),
-- bare scientific names.
-
-## `resolve_species_url(x)`
-
-Length-1 resolver used by all `sp_*()` functions. Errors if `length(x) != 1`.
-
-## `ensure_species_vector(x)`
-
-Trims, de-duplicates, and validates a character vector for batch functions.
-
-## `read_html_fixture(path)`
-
-Reads local HTML for tests (internal).
-
-## `get_fetch_page(cache = TRUE)`
-
-Returns either `fetch_page` or memoised `fetch_page_memoised` depending on the `cache` argument passed to user functions.
-
----
-
-# `R/fetch.R`
-
-## `fetch_page(url, quiet = TRUE)` — **exported**
-
-**Responsibilities only:** HTTP, rate limit, retries, return `xml_document`.
-
-| Step | Implementation |
-|------|----------------|
-| URL normalisation | `normalize_sharkipedia_url()` |
-| Politeness | `rate_limit_pause()` |
-| Request | `httr2::request()` + user agent + `req_retry(max_tries = 3)` |
-| Error handling | Abort on status ≥ 400 with `cli` message |
-| Body | `httr2::resp_body_html()` → **xml2** document |
-
-```{r fetch-demo, eval = FALSE}
-doc_live <- fetch_page("Carcharhinus acronotus", quiet = FALSE)
-class(doc_live)
-```
-
-## `fetch_page_memoised`
-
-`memoise::memoise(fetch_page)` — identical URLs in one R session return the cached document without a new HTTP call.
-
----
-
-# `R/parse.R`
-
-Parsing functions **never** perform HTTP. They only read `xml_document` objects.
-
-## `parse_species_index(doc)`
-
-**Used by:** `sp_species_urls()`
-
-- Selector: `a[href^='/species/']`
-- Excludes CSV export links (`*.csv` slugs)
-- Returns `species`, `slug`, `url`
-
-```{r parse-index}
-idx <- sharkipediaR:::parse_species_index(index_doc)
-head(idx, 4)
-```
-
-## `parse_index_last_page(doc)`
-
-Reads Bulma pagination links (`.pagination-link`) and returns the maximum page number — used when `sp_species_urls(all_pages = TRUE)`.
-
-## `parse_taxonomy(doc)`
-
-**Used by:** `sp_species()`
-
-- Species name: `h1.title`
-- Ranks: `div.columns > div.column:first-child > p` with labels `Superorder:`, `Subclass:`, `Order:`, `Family:`
-
-```{r parse-tax}
-sharkipediaR:::parse_taxonomy(doc)
-```
-
-## Trait table helpers
-
-| Function | Role |
-|----------|------|
-| `trait_table_headers()` | Reads `<thead><th>` text |
-| `is_trait_table()` | `TRUE` if headers include `"Name"` |
-| `preceding_trait_group()` | XPath `preceding::h4[contains(@class,'subtitle')][1]` for trait class |
-
-## `parse_traits_tables(doc)`
-
-**Used by:** `sp_traits()` via `fetch_species_traits()`
-
-1. Find all `table.table` elements.
-2. Keep tables whose headers match Sharkipedia’s trait schema.
-3. `rvest::html_table()` for body rows.
-4. Attach `trait_group` from the nearest preceding `h4`.
-
-```{r parse-traits-raw}
-raw_traits <- sharkipediaR:::parse_traits_tables(doc)
-names(raw_traits)
-head(raw_traits, 3)
-```
-
-Note: column names are still **PascalCase** (`Name`, `Value`, …) at this stage.
-
-## `decode_react_props(props)`
-
-Decodes HTML entities in `data-react-props` JSON and parses with **jsonlite**. Internal helper for trends.
-
-## `parse_trends_tables(doc)`
-
-**Used by:** `sp_trends()`
-
-1. Locate the first table after the `h3` heading containing `"Trends"`.
-2. For each `<tr>`:
-   - `location`, `unit`, `reference` from table cells
-   - `trend_id` / `trend_url` from the “Details” link
-   - `observations` matrix from `div[data-react-props]`
-3. Expand to one row per **year × value**.
-
-```{r parse-trends-raw}
-raw_trends <- sharkipediaR:::parse_trends_tables(doc)
-raw_trends %>%
-  count(location, trend_id) %>%
-  head(5)
-```
-
-## `parse_references(doc)`
-
-Collects unique `a[href^='/references/']` from trait and trend tables.
-
-```{r parse-refs}
-sharkipediaR:::parse_references(doc) %>% head(5)
-```
-
-## `link_text_or_href(node)`
-
-Utility for anchor text vs. `href` basename (internal).
-
----
-
-# `R/clean.R`
-
-Cleaning standardises names, types, and provenance.
-
-## `standardize_trait_columns(df)`
-
-Maps Sharkipedia headers to snake_case:
-
-| HTML | R column |
-|------|----------|
-| Name | trait_name |
-| Value | value |
-| Standard | standard |
-| ValueType | value_type |
-| Sex | sex |
-| Location | location |
-| Reference | reference |
-
-## `clean_traits(df, species, source_url, retrieved_at)`
-
-- Renames columns via `standardize_trait_columns()`
-- Adds `species`, `source_url`, `retrieved_at` (UTC POSIXct)
-- `str_squish()` + `na_if("", .)` on character fields
-- Strips `/references/` prefixes from `reference`
-
-```{r clean-traits}
-traits_clean <- sharkipediaR:::clean_traits(
-  raw_traits,
-  species = "Carcharhinus acronotus",
-  source_url = source_url,
-  retrieved_at = retrieved_at
-)
-names(traits_clean)
-```
-
-## `clean_trends(df, species, source_url, retrieved_at)`
-
-- Coerces `year` to integer, keeps `value` as double
-- Adds species and provenance columns
-- Squashes whitespace on metadata fields
-
-```{r clean-trends}
-trends_clean <- sharkipediaR:::clean_trends(
-  raw_trends,
-  species = "Carcharhinus acronotus",
-  source_url = source_url,
-  retrieved_at = retrieved_at
-)
-summary(trends_clean$year)
-```
-
----
-
-# `R/validate.R`
-
-Validation is the last gate before data reach the user.
-
-## `validate_traits(df)`
-
-- **Required columns:** `species`, `trait_name`, `value`, `source_url`, `retrieved_at`
-- **Warns** (does not error) on zero rows — page structure may have changed
-
-## `validate_trends(df)`
-
-- **Required columns:** `species`, `year`, `value`, `source_url`, `retrieved_at`
-- Same empty-data warning pattern
-
-```{r validate}
-sharkipediaR:::validate_traits(traits_clean) %>% nrow()
-sharkipediaR:::validate_trends(trends_clean) %>% nrow()
-```
-
----
-
-# `R/sp_species_urls.R`
-
-## `sp_species_urls(all_pages = FALSE, max_pages = NULL, cache = TRUE)`
-
-| Argument | Behaviour |
-|----------|-----------|
-| `all_pages = FALSE` | Only page 1 of `?all=true` index (~20 species) |
-| `all_pages = TRUE` | Reads pagination from page 1, loops all pages |
-| `max_pages` | Caps pagination when exploring |
-| `cache` | Uses memoised `fetch_page` |
-
-Returns deduplicated tibble: `species`, `slug`, `url`.
+**Example:**
 
 ```{r sp-urls, eval = FALSE}
-sp_species_urls()
-sp_species_urls(all_pages = TRUE, max_pages = 3)
+suppressPackageStartupMessages(library(tidyverse))
+library(sharkipediaR)
+
+idx <- sp_species_urls()
+idx %>% slice_head(n = 5)
 ```
 
----
-
-# `R/sp_search.R`
-
-## `sp_search(query, index = NULL, all_pages = FALSE, cache = TRUE)`
-
-1. Normalises `query` via `ensure_species_vector()`.
-2. Builds or accepts `index` tibble.
-3. `grepl(..., fixed = TRUE)` on lowercased `species` and `slug`.
-4. `distinct(url)`.
-
-Best practice: `idx <- sp_species_urls(all_pages = TRUE)` once, then `sp_search("rhincodon", index = idx)`.
 
 ---
 
-# `R/sp_species.R`
+## `sp_search()` — search by name
 
-## `sp_species(species, cache = TRUE)`
+**What it does:** Filters the index for partial scientific names (e.g. `"Carcharh"`).
 
-End-user taxonomy extractor. Returns **one row**:
 
-`species`, `superorder`, `subclass`, `order`, `family`, `source_url`, `retrieved_at`
+**How to use:** Pass your own index if you already called `sp_species_urls(all_pages = TRUE)` — avoids re-downloading.
 
-```{r sp-species-demo}
-ex <- example_carcharhinus()
-ex$species_meta
+
+**Example:**
+
+```{r sp-search, eval = FALSE}
+sp_search("Galeocerdo", index = idx)
 ```
 
+
 ---
 
-# `R/sp_traits.R`
+## `sp_species()` — taxonomy for one species
 
-## `sp_traits(species, cache = TRUE)`
+**What it does:** Returns one row: species name, order, family, etc., plus when/where it was downloaded.
 
-Public API for traits.
 
-- **One species:** calls `fetch_species_traits()`.
-- **Many species:** `purrr::map_dfr()` with column `species_input`.
+**Example:**
 
-## `fetch_species_traits(species, cache = TRUE)` — internal
-
-Orchestrates the full trait pipeline documented above.
-
-```{r full-pipeline-traits}
-# Equivalent to fetch_species_traits() without HTTP:
-traits_clean <- sharkipediaR:::validate_traits(traits_clean)
-nrow(traits_clean)
+```{r sp-species, eval = FALSE}
+sp_species("Carcharodon carcharias")
 ```
 
+
 ---
 
-# `R/sp_trends.R`
+## `sp_traits()` — life-history measurements
 
-## `sp_trends(species, cache = TRUE)`
+**What it does:** All trait rows from a species page (age at maturity, length, reproduction, …) in **long format** — one row per measurement.
 
-Public API for population trends (long format).
 
-## `fetch_species_trends(species, cache = TRUE)` — internal
+**How to use:** Pass one name or a **vector** of names for batch downloads.
 
-Same pattern as traits: fetch → parse → clean → validate.
 
-```{r full-pipeline-trends}
-nrow(trends_clean)
+**Example:**
+
+```{r sp-traits, eval = FALSE}
+traits <- sp_traits("Carcharodon carcharias")
+traits %>%
+  filter(trait_name == "Linf") %>%
+  mutate(value = as.numeric(value))
 ```
 
----
-
-# `R/sp_references.R`
-
-## `sp_references(species, cache = TRUE)`
-
-Fetches species page, runs `parse_references()`, adds `species`, `source_url`, `retrieved_at`.
-
-Use to build a reference lookup table before joining to traits/trends.
 
 ---
 
-# `R/example_data.R`
+## `sp_trends()` — population trends through time
 
-## `example_carcharhinus()` — **exported**
+**What it does:** Extracts year–value series from trend charts on the species page (the same data behind Sharkipedia’s plots).
 
-Loads `inst/extdata/carcharhinus_acronotus.rds` — a list with pre-parsed components used in all vignettes.
 
-Rebuild after fixture updates:
+**How to use:** Filter by `reference` to match a paper (see the **Ecological workflows** tutorial for `reid2011`).
 
-```{r rebuild, eval = FALSE}
-source("data-raw/build-vignette-data.R")
+
+**Example:**
+
+```{r sp-trends, eval = FALSE}
+trends <- sp_trends("Carcharodon carcharias")
+trends %>%
+  filter(reference == "reid2011") %>%
+  ggplot(aes(year, value)) +
+  geom_line()
 ```
 
+
 ---
 
-# End-to-end manual pipeline (advanced users)
+## `sp_references()` — literature links on a species page
 
-Reproduce `sp_traits()` without calling it:
+**What it does:** Lists reference IDs (e.g. `reid2011`) and URLs cited on that species page.
 
-```{r manual-pipeline}
-url <- sharkipediaR:::species_name_to_url("Carcharhinus acronotus")
-# doc <- fetch_page(url)   # live
-# raw <- parse_traits_tables(doc)
-# out <- validate_traits(clean_traits(raw, "Carcharhinus acronotus", url))
-# Identical structure to example_carcharhinus()$traits
+
+**Example:**
+
+```{r sp-refs, eval = FALSE}
+sp_references("Carcharodon carcharias")
 ```
 
-This is the extension point if Sharkipedia adds a JSON API later: swap `fetch_page()` + `parse_*()` implementations while keeping `sp_traits()` stable.
 
 ---
 
-# Testing and pkgdown
+## `example_carcharhinus()`, `example_reid2011_trends()`, `example_white_shark_trends()`
 
-- **Unit tests** use HTML fixtures in `tests/testthat/fixtures/` (no network).
-- **Vignettes** use `example_carcharhinus()` for plots and tables.
-- **pkgdown** picks up vignettes automatically after `pkgdown::build_site()`.
+**What they do:** Frozen Sharkipedia data for tutorials and testing — **no internet** required.
 
-See **Getting started** and **Ecological workflows** for ggplot demonstrations and scientific motivation.
+
+**Example:**
+
+```{r examples}
+suppressPackageStartupMessages(library(tidyverse))
+library(sharkipediaR)
+
+example_reid2011_trends() %>% count(species)
+```
+
+
+---
+
+## `fetch_page()` — advanced
+
+**What it does:** Downloads raw HTML only. Use this if you extend the package; most people should use `sp_*()` instead.
+
+
+**Example:**
+
+```{r fetch, eval = FALSE}
+# fetch_page("https://www.sharkipedia.org/species/carcharodon-carcharias")
+```
+
+
+---
+
+## Behind the scenes (optional reading)
+
+| Step | File | Role |
+|------|------|------|
+| Download | `fetch.R` | Polite HTTP, rate limit, cache |
+| Read HTML | `parse.R` | Find tables and trend JSON |
+| Tidy | `clean.R` | snake_case columns, provenance |
+| Check | `validate.R` | Required columns present |
+
+You never need to call these directly unless you are contributing to **sharkipediaR**.
+
+
+---
+
+## Be a good citizen
+
+- Do not hammer the site with parallel requests.
+- Keep `source_url` and `retrieved_at` in your outputs.
+- Cite Sharkipedia and the original papers (e.g. Reid et al. 2011).

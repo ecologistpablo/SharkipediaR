@@ -38,6 +38,6 @@ Suggests:
     scales,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
-Config/needs/website: pkgdown, pkgload, ggplot2, plotly, htmltools, knitr, rmarkdown, scales
+Config/needs/website: pkgdown, pkgload, tidyverse, ggplot2, plotly, viridis, scico, htmltools, knitr, rmarkdown
 Config/testthat/edition: 3
 LazyData: true

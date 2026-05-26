@@ -1,10 +1,10 @@
 ---
-title: "Getting started with sharkipediaR"
+title: "Getting started"
 author: "Pablo Fuenzalida"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting started with sharkipediaR}
+  %\VignetteIndexEntry{Getting started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,84 +13,62 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 7,
-  fig.height = 4.5,
-  fig.align = "center"
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
-## Why this package exists
 
-[Sharkipedia](https://www.sharkipedia.org) is a curated, open database of shark and ray life-history traits and population abundance time series — the kind of comparative resource that underpins fisheries assessment, extinction-risk analysis, and macroecology ([Dulvy et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)). **sharkipediaR** brings those data into R as tidy tibbles so your workflows look like any other modern ecological analysis: **`%>%`** pipes, explicit provenance, ggplot-ready tables, and interactive **plotly** charts in the ecological vignette.
+## What this tutorial is for
 
-The package is deliberately **not** a bulk mirror of the website. It is a polite, reproducible client: rate-limited requests, in-session caching, and HTML parsing separated from cleaning and validation.
+This page is a **quick tour** of **sharkipediaR** — not the full package manual (that lives on the home page and in **Reference**).
 
-## Installation
+[Sharkipedia](https://www.sharkipedia.org) holds published shark and ray **traits** and **population trends**. This package pulls that into R as tidy tables you can filter and plot.
 
-```{r install, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("ecologistpablo/SharkpediaR")
-```
+
+## Load the package
 
 ```{r load}
+suppressPackageStartupMessages(library(tidyverse))
 library(sharkipediaR)
-library(dplyr)
 ```
 
-## A thirty-second workflow
 
-With an internet connection, you can pull data for a single species in three lines:
+## Three commands worth knowing
 
-```{r live-demo, eval = FALSE}
-meta   <- sp_species("Carcharhinus acronotus")
-traits <- sp_traits("Carcharhinus acronotus")
-trends <- sp_trends("Carcharhinus acronotus")
+When you are online, almost everything starts here:
+
+```{r live, eval = FALSE}
+sp_species("Carcharodon carcharias")   # taxonomy
+sp_traits("Carcharodon carcharias")    # life-history table
+sp_trends("Carcharodon carcharias")      # abundance through time
 ```
 
-Every user-facing table includes **`source_url`** and **`retrieved_at`** so you can cite exactly what was downloaded and when — essential for Red List workshops, stock assessments, and supplementary materials.
+Each result includes **`source_url`** and **`retrieved_at`** — keep them for methods sections and supplementary files.
 
-## Offline example data
 
-Vignettes and `R CMD check` use a frozen example dataset so documentation builds without hitting the live site:
+## Try it without the internet
 
-```{r example}
+Vignettes use frozen data so GitHub Actions can build the site:
+
+```{r offline}
 ex <- example_carcharhinus()
-names(ex)
+glimpse(ex$traits)
 ```
 
-| List element      | Description                                      |
-|-------------------|--------------------------------------------------|
-| `species_meta`    | Taxonomy + provenance (one row)                  |
-| `traits`          | Long-format life-history trait measurements      |
-| `trends`          | Long-format population trend observations        |
-| `references`      | Reference IDs linked from the species page       |
-| `species_index`   | Sample rows from the public species index        |
+For trend examples in the next tutorial, see `example_reid2011_trends()` and `example_white_shark_trends()`.
 
-## Exported functions at a glance
-
-| Function | Script | Purpose |
-|----------|--------|---------|
-| `sp_species_urls()` | `R/sp_species_urls.R` | Discover species names and URLs from the index |
-| `sp_search()` | `R/sp_search.R` | Filter the index by partial scientific name |
-| `sp_species()` | `R/sp_species.R` | Taxonomy metadata for one species |
-| `sp_traits()` | `R/sp_traits.R` | Life-history traits (long format) |
-| `sp_trends()` | `R/sp_trends.R` | Population trends (long format) |
-| `sp_references()` | `R/sp_references.R` | Bibliographic reference links |
-| `fetch_page()` | `R/fetch.R` | Low-level HTML retrieval (advanced) |
-| `example_carcharhinus()` | `R/example_data.R` | Offline example data |
-
-Internal parsing and cleaning live in `R/parse.R`, `R/clean.R`, and `R/validate.R` — see the **Architecture and function reference** vignette.
 
 ## Where to go next
 
-- **Ecological workflows** — trait summaries, interactive **plotly** trend plots, `%>%` workflows.
-- **Architecture and function reference** — how every function in each script works, with pipeline examples.
+**Ecological workflows** — ggplot + plotly, including [Reid et al. (2011)](https://www.sharkipedia.org/references/reid2011) NSW meshing trends.
 
-## Building the pkgdown site
 
-```{r pkgdown, eval = FALSE}
-install.packages(c("pkgdown", "ggplot2", "plotly", "htmltools"))
-pkgdown::build_site()
+**Package architecture** — plain-language guide to every function.
+
+
+## Install (if you have not yet)
+
+```{r install, eval = FALSE}
+devtools::install_github("ecologistpablo/SharkpediaR")
 ```
-
-The site will include these vignettes under **Articles** automatically.
