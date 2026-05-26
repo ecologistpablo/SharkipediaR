@@ -33,6 +33,111 @@ Each `sp_*()` function **fetches a page → parses tables → cleans names → c
 
 ---
 
+## Function reference (arguments & returns)
+
+Detailed reference for exported `sp_*()` helpers. For narrative walkthroughs, continue to the sections below.
+
+
+### Discovery
+
+#### `sp_species_urls(all_pages = FALSE, max_pages = NULL, cache = TRUE)`
+
+Scrapes the public [species index](https://www.sharkipedia.org/species) and returns a deduplicated tibble.
+
+| Argument | Description |
+|----------|-------------|
+| `all_pages` | If `TRUE`, walk all paginated index pages (~65). Default `FALSE` (first page only, polite). |
+| `max_pages` | Cap pages when `all_pages = TRUE` (e.g. `max_pages = 3` while testing). |
+| `cache` | Use in-session memoised HTTP cache. |
+
+**Returns:** `species` (scientific name), `slug` (URL slug), `url` (full Sharkipedia URL).
+
+
+#### `sp_search(query, index = NULL, all_pages = FALSE, cache = TRUE)`
+
+Case-insensitive substring search on scientific names and slugs.
+
+| Argument | Description |
+|----------|-------------|
+| `query` | Character vector of search terms (e.g. `"Carcharhinus"`). |
+| `index` | Optional tibble from `sp_species_urls()`. Pass a full index to avoid re-downloading. |
+| `all_pages` | Used only if `index` is `NULL` — whether to build a full index first. |
+
+**Returns:** Matching rows from the index (`species`, `slug`, `url`).
+
+
+### Species-level data
+
+#### `sp_species(species, cache = TRUE)`
+
+Taxonomy and provenance for one species.
+
+| Argument | Description |
+|----------|-------------|
+| `species` | Scientific name (`"Carcharhinus acronotus"`), slug, or full species URL. |
+
+**Returns:** One-row tibble: `species`, `superorder`, `subclass`, `order`, `family`, `source_url`, `retrieved_at`.
+
+
+#### `sp_traits(species, cache = TRUE)`
+
+Life-history **trait** measurements in long format.
+
+| Argument | Description |
+|----------|-------------|
+| `species` | One name/URL or a **character vector** for batch download (adds `species_input` column). |
+
+**Returns:**
+
+| Column | Description |
+|--------|-------------|
+| `trait_group` | Age, Length, Reproduction, Ecological Role, … |
+| `trait_name` | e.g. `Amat50`, `Linf`, `Lmax-observed` |
+| `value` | Reported value (character; use `as.numeric()` when needed) |
+| `standard` | Units or category (e.g. `Year`, `cm`) |
+| `value_type` | Often `mean`, `median`, … |
+| `sex` | `Male`, `Female`, `Pooled`, … |
+| `location` | Study or geographic location |
+| `reference` | Sharkipedia reference ID |
+| `source_url`, `retrieved_at` | Provenance |
+
+
+#### `sp_trends(species, cache = TRUE)`
+
+Population **abundance trends** parsed from embedded chart data on species pages (long format: one row per year).
+
+| Argument | Description |
+|----------|-------------|
+| `species` | One name/URL or character vector (batch). |
+
+**Returns:**
+
+| Column | Description |
+|--------|-------------|
+| `location` | Trend region / stock description |
+| `unit` | e.g. `individual`, `kg` |
+| `reference` | Source reference ID |
+| `trend_id`, `trend_url` | Sharkipedia trend record |
+| `year`, `value` | Time series observations |
+| `species`, `source_url`, `retrieved_at` | Provenance |
+
+
+#### `sp_references(species, cache = TRUE)`
+
+Bibliographic **reference links** cited on the species page (from trait and trend tables).
+
+**Returns:** `reference_id`, `reference_url`, `species`, `source_url`, `retrieved_at`.
+
+
+### Offline helpers
+
+#### `example_carcharhinus()`, `example_reid2011_trends()`, `example_white_shark_trends()`
+
+Pre-parsed tibbles for examples, tests, and vignettes **without HTTP**. `example_carcharhinus()` returns a list (`species_meta`, `traits`, `trends`, `references`, `species_index`); the trend helpers return trend tibbles for tutorial species sets.
+
+
+---
+
 ## `sp_species_urls()` — find species web addresses
 
 **What it does:** Reads the [species index](https://www.sharkipedia.org/species) and returns names + URLs.
