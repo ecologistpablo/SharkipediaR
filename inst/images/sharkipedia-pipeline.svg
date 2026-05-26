@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" role="img" aria-labelledby="title desc">
+  <title id="title">sharkipediaR data pipeline</title>
+  <desc id="desc">Species pages flow through fetch, parse, clean, and sp functions into tidyverse analysis.</desc>
+
+  <defs>
+    <!-- Dermal denticleinspired dot pattern -->
+    <pattern id="denticles" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-18)">
+      <circle cx="4" cy="4" r="1.1" fill="#1e3d52" opacity="0.35"/>
+      <circle cx="11" cy="10" r="0.85" fill="#2a5570" opacity="0.28"/>
+      <ellipse cx="9" cy="3" rx="1.4" ry="0.7" fill="#163040" opacity="0.22"/>
+    </pattern>
+
+    <linearGradient id="oceanBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1c2e"/>
+      <stop offset="45%" stop-color="#0f2840"/>
+      <stop offset="100%" stop-color="#122f4a"/>
+    </linearGradient>
+
+    <linearGradient id="boxSharkipedia" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d6a8a"/>
+      <stop offset="100%" stop-color="#1a4d68"/>
+    </linearGradient>
+
+    <linearGradient id="boxPackage" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3d7a6e"/>
+      <stop offset="100%" stop-color="#265a50"/>
+    </linearGradient>
+
+    <linearGradient id="boxScience" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6b5a45"/>
+      <stop offset="100%" stop-color="#4a3f32"/>
+    </linearGradient>
+
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6eb5d4"/>
+      <stop offset="100%" stop-color="#9ed4c8"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8ec9dc"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas -->
+  <rect width="960" height="340" rx="16" fill="url(#oceanBg)"/>
+  <rect width="960" height="340" rx="16" fill="url(#denticles)"/>
+
+  <!-- Subtle vignette -->
+  <rect width="960" height="340" rx="16" fill="url(#oceanBg)" opacity="0.55"/>
+
+  <!-- Zone labels -->
+  <text x="48" y="36" fill="#8eb8d0" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="0.06em">SHARKIPEDIA</text>
+  <text x="318" y="36" fill="#9ed4c8" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="0.04em">sharkipediaR</text>
+  <text x="48" y="268" fill="#d4c4a8" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="0.06em">YOUR WORKFLOW</text>
+
+  <!-- Row 1: left ù right -->
+  <g filter="url(#softGlow)">
+    <rect x="32" y="58" width="200" height="72" rx="12" fill="url(#boxSharkipedia)" stroke="#7eb8d4" stroke-width="1.5"/>
+    <text x="132" y="88" text-anchor="middle" fill="#e8f6fc" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">Species pages</text>
+    <text x="132" y="110" text-anchor="middle" fill="#b8dce8" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="12">traits ù trends ù refs</text>
+
+    <rect x="272" y="58" width="200" height="72" rx="12" fill="url(#boxPackage)" stroke="#8ed4c4" stroke-width="1.5"/>
+    <text x="372" y="92" text-anchor="middle" fill="#ecf8f4" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">fetch_page</text>
+    <text x="372" y="112" text-anchor="middle" fill="#b8e8dc" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="11">polite HTTP ù cached</text>
+
+    <rect x="512" y="58" width="220" height="72" rx="12" fill="url(#boxPackage)" stroke="#8ed4c4" stroke-width="1.5"/>
+    <text x="622" y="88" text-anchor="middle" fill="#ecf8f4" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">Parse HTML &amp; charts</text>
+    <text x="622" y="110" text-anchor="middle" fill="#b8e8dc" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="11">tables ù trend time series</text>
+  </g>
+
+  <!-- Row 2: right ù left (snake return) -->
+  <g filter="url(#softGlow)">
+    <rect x="512" y="188" width="220" height="72" rx="12" fill="url(#boxPackage)" stroke="#8ed4c4" stroke-width="1.5"/>
+    <text x="622" y="218" text-anchor="middle" fill="#ecf8f4" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">Clean &amp; validate</text>
+    <text x="622" y="240" text-anchor="middle" fill="#b8e8dc" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="11">source_url ù retrieved_at</text>
+
+    <rect x="252" y="188" width="240" height="72" rx="12" fill="url(#boxPackage)" stroke="#8ed4c4" stroke-width="1.5"/>
+    <text x="372" y="214" text-anchor="middle" fill="#ecf8f4" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">sp_species ù sp_traits</text>
+    <text x="372" y="234" text-anchor="middle" fill="#ecf8f4" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">sp_trends ù sp_references</text>
+
+    <rect x="32" y="188" width="200" height="72" rx="12" fill="url(#boxScience)" stroke="#c9b896" stroke-width="1.5"/>
+    <text x="132" y="218" text-anchor="middle" fill="#faf6ee" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">tidyverse analysis</text>
+    <text x="132" y="240" text-anchor="middle" fill="#e0d4bc" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="11">plots ù models ù exports</text>
+  </g>
+
+  <!-- Arrows: top row LùR -->
+  <path d="M 234 94 L 268 94" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowHead)"/>
+  <path d="M 474 94 L 508 94" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowHead)"/>
+
+  <!-- Down from parse to clean -->
+  <path d="M 622 132 C 622 158 622 168 622 182" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowHead)"/>
+
+  <!-- Bottom row RùL -->
+  <path d="M 510 224 L 494 224" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowHead)"/>
+  <path d="M 250 224 L 234 224" stroke="url(#arrowGrad)" stroke-width="3" fill="none" marker-end="url(#arrowHead)"/>
+
+  <!-- Decorative fin accent -->
+  <path d="M 900 48 Q 928 68 900 88 Q 872 68 900 48" fill="#1e4a62" opacity="0.5" stroke="#5a9ab8" stroke-width="0.8"/>
+  <path d="M 920 260 Q 948 280 920 300 Q 892 280 920 260" fill="#1e4a62" opacity="0.35" stroke="#5a9ab8" stroke-width="0.8"/>
+</svg>

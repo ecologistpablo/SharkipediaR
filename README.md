@@ -113,22 +113,9 @@ Every table includes **`source_url`** and **`retrieved_at`** for reproducible me
 
 **sharkipediaR** is a lightweight scientific client — not a bulk crawler. It reads the same public HTML pages you would open in a browser, with polite rate limits and in-session caching (`memoise`).
 
-```mermaid
-flowchart LR
-  subgraph Sharkipedia
-    P[Species pages<br/>traits · trends · refs]
-  end
-  subgraph sharkipediaR
-    F[fetch_page]
-    R[parse HTML & chart data]
-    C[clean & validate]
-    S[sp_species · sp_traits<br/>sp_trends · sp_references]
-  end
-  subgraph Your workflow
-    A[tidyverse analysis<br/>plots · models · exports]
-  end
-  P --> F --> R --> C --> S --> A
-```
+<p align="center">
+  <img src="inst/images/sharkipedia-pipeline.svg" alt="sharkipediaR pipeline: Sharkipedia species pages flow through fetch, parse, clean, and sp_* functions into tidyverse analysis" width="960" style="max-width: 100%; height: auto;">
+</p>
 
 For argument lists, return columns, and worked examples per function, see the [Package architecture](https://ecologistpablo.github.io/SharkpediaR/articles/architecture-and-functions.html) vignette.
 
