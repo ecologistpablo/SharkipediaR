@@ -1,4 +1,4 @@
-# Build and deploy pkgdown site (including vignettes) to gh-pages
+# pkgdown site → gh-pages (https://ecologistpablo.github.io/SharkpediaR/)
 on:
   push:
     branches: [main, master]
@@ -9,7 +9,9 @@ name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     concurrency:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
       cancel-in-progress: true
@@ -29,7 +31,8 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
-      - name: Build example data for vignettes
+      # Rebuild inst/extdata if fixtures changed (needs installed package)
+      - name: Build vignette example data
         run: Rscript data-raw/build-vignette-data.R
 
       - uses: r-lib/actions/build-site@v2

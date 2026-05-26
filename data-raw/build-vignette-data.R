@@ -1,20 +1,19 @@
 # Builds inst/extdata/carcharhinus_acronotus.rds for offline vignettes and examples.
-suppressPackageStartupMessages(library(dplyr))
 pkg_root <- if (file.exists("DESCRIPTION")) "." else ".."
+
 fixture <- function(name) {
   file.path(pkg_root, "tests", "testthat", "fixtures", name)
 }
 
+# Internal parsers are not exported; load_all works locally and on CI.
+if (!requireNamespace("pkgload", quietly = TRUE)) {
+  stop("Install pkgload to run data-raw/build-vignette-data.R", call. = FALSE)
+}
+pkgload::load_all(pkg_root, quiet = TRUE)
+
 doc <- xml2::read_html(fixture("carcharhinus_acronotus.html"), encoding = "UTF-8")
 source_url <- "https://www.sharkipedia.org/species/carcharhinus-acronotus"
 retrieved_at <- as.POSIXct("2026-05-25 12:00:00", tz = "UTC")
-
-# Source helpers without full package load
-source(file.path(pkg_root, "R", "constants.R"))
-source(file.path(pkg_root, "R", "parse.R"))
-source(file.path(pkg_root, "R", "clean.R"))
-source(file.path(pkg_root, "R", "validate.R"))
-
 species_name <- "Carcharhinus acronotus"
 
 example_data <- list(
