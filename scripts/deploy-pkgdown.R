@@ -23,5 +23,5 @@ pkgdown::deploy_to_branch(
 )
 
 message("Done. Enable GitHub Pages: branch gh-pages, folder / (root).")
-message("Site: https://ecologistpablo.github.io/SharkpediaR/")
+message("Site: https://ecologistpablo.github.io/SharkipediaR/")
 message("Articles: .../articles/sharkipediar.html")

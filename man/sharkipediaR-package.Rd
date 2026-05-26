@@ -11,9 +11,9 @@ G'day mate! This is a tidyverse-oriented R client for publicly accessible Sharki
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ecologistpablo/SharkpediaR}
-  \item \url{https://ecologistpablo.github.io/SharkpediaR/}
-  \item Report bugs at \url{https://github.com/ecologistpablo/SharkpediaR/issues}
+  \item \url{https://github.com/ecologistpablo/SharkipediaR}
+  \item \url{https://ecologistpablo.github.io/SharkipediaR/}
+  \item Report bugs at \url{https://github.com/ecologistpablo/SharkipediaR/issues}
 }
 
 }
