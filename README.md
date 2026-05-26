@@ -206,7 +206,7 @@ Aaron Judah · Sean Renning · Simon Dedman · Maryam Nakhostin · aharry · lsa
 
 …and many others who enter and curate data on [sharkipedia.org](https://www.sharkipedia.org).
 
-When you publish work using this package, please cite **Sharkipedia** ([Dulvy et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)) and the **original studies** behind each trait or trend (`reference` column), and retain `source_url` / `retrieved_at` from **sharkipediaR** output.
+When you publish work using this package, please cite **Sharkipedia** ([Mull et al., 2022](https://www.nature.com/articles/s41597-022-01655-1)) and the **original studies** behind each trait or trend (`reference` column), and retain `source_url` / `retrieved_at` from **sharkipediaR** output.
 
 <br>
 
@@ -227,7 +227,7 @@ MIT © Pablo Fuenzalida. See [LICENSE](LICENSE).
 
 **Citation — Sharkipedia database:**
 
-> Dulvy, N.K. *et al.* (2022). The conservation status and distribution of sharks, rays, and chimaeras. *Scientific Data* **9**, 633. <https://www.nature.com/articles/s41597-022-01655-1>
+> Mull CG, Pacoureau N, Pardo SA, Saldaña Ruiz L, Rodriguez EG, Finucci B, Haack M, Harry AV, Judah A, VanderWright W, Yin JS, Kindsvater HK, Dulvy NK. 2022. Sharkipedia: a curated open-access database of shark and ray life history traits and abundance time-series. *Scientific Data* **9**, 633. <https://www.nature.com/articles/s41597-022-01655-1>
 
 **Citation — this R package:**
 
