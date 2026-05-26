@@ -10,7 +10,8 @@ main branch:
 
 <!-- badges: end -->
 
-<!-- Add hero images / example plots here when ready -->
+<img width="588" height="178" alt="Screenshot 2026-05-25 at 11 56 07 pm" src="https://github.com/user-attachments/assets/f65d1595-86c0-4bff-944c-0d7e13f460cc" />
+
 
 <h1 align="center">sharkipediaR</h1>
 <h4 align="center">An R package to access Sharkipedia life-history traits and population trends</h4>
