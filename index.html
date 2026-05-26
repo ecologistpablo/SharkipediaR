@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Access Sharkipedia Trait and Trend Data • sharkipediaR</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Access Sharkipedia Trait and Trend Data">
 <meta name="description" content="G'day mate! This is a tidyverse-oriented R client for publicly accessible Sharkipedia life-history trait and population trend data. Provides polite HTML retrieval, modular parsing, and reproducible ecological workflows.">
@@ -58,13 +58,11 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><strong>sharkipediaR</strong> is a tidyverse-oriented R client for <a href="https://www.sharkipedia.org" class="external-link">Sharkipedia</a> — the open database of shark and ray life-history traits and population abundance trends (<a href="https://www.nature.com/articles/s41597-022-01655-1" class="external-link">Dulvy et al., 2022</a>). The package downloads public species pages politely, parses embedded HTML tables and trend series, and returns reproducible tibbles ready for <code>dplyr</code> and <strong>ggplot2</strong> / <strong>plotly</strong>.</p>
+<p><img width="588" height="178" alt="Screenshot 2026-05-25 at 11 56 07 pm" src="https://github.com/user-attachments/assets/3115f84d-6298-47eb-9d35-5baaccee27b8"></p>
+<p><strong>sharkipediaR</strong> is a tidyverse-oriented R package for <a href="https://www.sharkipedia.org" class="external-link">Sharkipedia</a> — the open database of shark and ray life-history traits and population abundance trends (<a href="https://www.nature.com/articles/s41597-022-01655-1" class="external-link">Dulvy et al., 2022</a>). The package downloads public species pages politely, parses embedded HTML tables and trend series, and returns reproducible tibbles ready for your analyses.</p>
 <ul>
 <li>
 <strong>Site (vignettes &amp; reference):</strong> <a href="https://ecologistpablo.github.io/SharkpediaR/" class="uri">https://ecologistpablo.github.io/SharkpediaR/</a>
-</li>
-<li>
-<strong>Source:</strong> <a href="https://github.com/ecologistpablo/SharkpediaR" class="external-link uri">https://github.com/ecologistpablo/SharkpediaR</a>
 </li>
 </ul>
 <hr>
@@ -73,7 +71,7 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ecologistpablo/SharkpediaR"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ecologistpablo/SharkpediaR"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Suggested packages</strong> for examples and vignettes: <code>dplyr</code>, <code>ggplot2</code>, <code>plotly</code>.</p>
 <hr>
 </div>
@@ -510,7 +508,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://github.com/ecologistpablo" class="external-link">Pablo Fuenzalida</a> <br><small class="roles"> Author, maintainer </small>  </li>
+<a href="https://github.com/ecologistpablo" class="external-link">Pablo Fuenzalida</a> <br><small class="roles"> Author, maintainer </small>   </li>
 </ul>
 </div>
 
@@ -530,7 +528,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
