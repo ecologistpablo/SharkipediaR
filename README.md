@@ -10,7 +10,7 @@ main branch:
 
 <!-- badges: end -->
 
-<h1 align="center">img width="588" height="178" alt="Screenshot 2026-05-25 at 11 56 07 pm" src="https://github.com/user-attachments/assets/1c56b1ef-319b-4387-8a91-077c94a4a506" />
+<img width="588" height="178" alt="Screenshot 2026-05-25 at 11 56 07 pm" src="https://github.com/user-attachments/assets/f65d1595-86c0-4bff-944c-0d7e13f460cc" />
 
 
 <h1 align="center">sharkipediaR</h1>
