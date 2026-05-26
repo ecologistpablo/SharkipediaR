@@ -21,7 +21,7 @@ analyses.
 ``` r
 
 # install.packages("devtools")
-devtools::install_github("ecologistpablo/SharkpediaR")
+devtools::install_github("ecologistpablo/SharkipediaR")
 ```
 
 **Suggested packages** for examples and vignettes: `dplyr`, `ggplot2`,
