@@ -12,7 +12,7 @@ tables and trend series, and returns reproducible tibbles ready for your
 analyses.
 
 - **Site (vignettes & reference):**
-  <https://ecologistpablo.github.io/SharkpediaR/>
+  <https://ecologistpablo.github.io/SharkipediaR/>
 
 ------------------------------------------------------------------------
 
@@ -61,10 +61,10 @@ traits %>%
 
 | Resource | Description |
 |----|----|
-| [Getting started](https://ecologistpablo.github.io/SharkpediaR/articles/sharkipediar.html) | Install, overview, workflow |
-| [Ecological workflows](https://ecologistpablo.github.io/SharkpediaR/articles/ecological-workflows.html) | Fisheries / conservation examples, interactive plots |
-| [Architecture & functions](https://ecologistpablo.github.io/SharkpediaR/articles/architecture-and-functions.html) | Full pipeline and internal parsers |
-| [Function reference](https://ecologistpablo.github.io/SharkpediaR/reference/index.html) | All exported functions |
+| [Getting started](https://ecologistpablo.github.io/SharkipediaR/articles/sharkipediar.html) | Install, overview, workflow |
+| [Ecological workflows](https://ecologistpablo.github.io/SharkipediaR/articles/ecological-workflows.html) | Fisheries / conservation examples, interactive plots |
+| [Architecture & functions](https://ecologistpablo.github.io/SharkipediaR/articles/architecture-and-functions.html) | Full pipeline and internal parsers |
+| [Function reference](https://ecologistpablo.github.io/SharkipediaR/reference/index.html) | All exported functions |
 
 In R: `utils::browseVignettes("sharkipediaR")`
 
