@@ -1,0 +1,23 @@
+url: https://ecologistpablo.github.io/SharkpediaR/
+
+template:
+  bootstrap: 5
+  params:
+    bootswatch: flatly
+
+authors:
+  Pablo Fuenzalida:
+    href: https://github.com/ecologistpablo
+
+navbar:
+  structure:
+    left:  [home, reference, articles]
+    right: [search, github]
+
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - sharkipediar
+  - ecological-workflows
+  - architecture-and-functions

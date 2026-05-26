@@ -267,12 +267,16 @@ Vignettes are **not** shown on the GitHub repo README; they live on the pkgdown 
 install.packages(c("pkgdown", "ggplot2", "plotly", "knitr", "rmarkdown"))
 source("data-raw/build-vignette-data.R")
 pkgdown::build_site()
-pkgdown::deploy_to_branch(repo_slug = "ecologistpablo/SharkpediaR")
+pkgdown::deploy_to_branch(branch = "gh-pages")  # no git_user / repo_slug
 ```
 
-Or push to `main` and let GitHub Actions deploy (see `.github/workflows/pkgdown.yaml`).
+Or: `Rscript scripts/deploy-pkgdown.R`
 
-Enable **GitHub Pages**: Settings → Pages → branch **`gh-pages`**, folder **`/ (root)`**.
+**If the site still looks old:** your first deploy may have pushed an **empty** `gh-pages` (see terminal error). Re-run deploy above; then hard-refresh (Cmd+Shift+R). Check `git ls-remote --heads origin gh-pages` — latest commit should be recent, not `Initializing gh-pages branch`.
+
+**GitHub Pages:** Settings → Pages → branch **`gh-pages`**, folder **`/ (root)`**.
+
+Vignettes: navbar **Articles**, not the home README.
 
 ---
 
