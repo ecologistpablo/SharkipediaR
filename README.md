@@ -115,7 +115,7 @@ Every table includes **`source_url`** and **`retrieved_at`** for reproducible me
 **sharkipediaR** is a lightweight scientific client — not a bulk crawler. It reads the same public HTML pages you would open in a browser, with polite rate limits and in-session caching (`memoise`).
 
 <p align="center">
-  <img src="man/figures/README-pipeline.png" alt="sharkipediaR pipeline: Sharkipedia species pages flow through fetch, parse, clean, and sp_* functions into tidyverse analysis" width="100%">
+<img width="640" height="197" alt="Screenshot 2026-05-27 at 12 24 23 am" src="https://github.com/user-attachments/assets/1a2e0251-ae24-4061-8e80-07184318d542" />
 </p>
 
 For argument lists, return columns, and worked examples per function, see the [Package architecture](https://ecologistpablo.github.io/SharkipediaR/articles/architecture-and-functions.html) vignette.
