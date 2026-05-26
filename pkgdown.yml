@@ -1,4 +1,4 @@
-url: https://ecologistpablo.github.io/SharkpediaR/
+url: https://ecologistpablo.github.io/SharkipediaR/
 
 template:
   bootstrap: 5
@@ -10,7 +10,7 @@ authors:
     href: https://github.com/ecologistpablo
 
 repo:
-  url: https://github.com/ecologistpablo/SharkpediaR/
+  url: https://github.com/ecologistpablo/SharkipediaR/
   branch: main
 
 navbar:

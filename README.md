@@ -1,12 +1,12 @@
-[![ecologistpablo - SharkpediaR](https://img.shields.io/static/v1?label=ecologistpablo&message=SharkpediaR&color=blue&logo=github)](https://github.com/ecologistpablo/SharkpediaR)
-[![pkgdown site](https://img.shields.io/badge/pkgdown-site-blue)](https://ecologistpablo.github.io/SharkpediaR/)
-[![issues - SharkpediaR](https://img.shields.io/github/issues/ecologistpablo/SharkpediaR)](https://github.com/ecologistpablo/SharkpediaR/issues)
-[![stars - SharkpediaR](https://img.shields.io/github/stars/ecologistpablo/SharkpediaR?style=social)](https://github.com/ecologistpablo/SharkpediaR)
-[![forks - SharkpediaR](https://img.shields.io/github/forks/ecologistpablo/SharkpediaR?style=social)](https://github.com/ecologistpablo/SharkpediaR)
-[![watchers - SharkpediaR](https://img.shields.io/github/watchers/ecologistpablo/SharkpediaR?style=social)](https://github.com/ecologistpablo/SharkpediaR)
+[![ecologistpablo - SharkipediaR](https://img.shields.io/static/v1?label=ecologistpablo&message=SharkipediaR&color=blue&logo=github)](https://github.com/ecologistpablo/SharkipediaR)
+[![pkgdown site](https://img.shields.io/badge/pkgdown-site-blue)](https://ecologistpablo.github.io/SharkipediaR/)
+[![issues - SharkipediaR](https://img.shields.io/github/issues/ecologistpablo/SharkipediaR)](https://github.com/ecologistpablo/SharkipediaR/issues)
+[![stars - SharkipediaR](https://img.shields.io/github/stars/ecologistpablo/SharkipediaR?style=social)](https://github.com/ecologistpablo/SharkipediaR)
+[![forks - SharkipediaR](https://img.shields.io/github/forks/ecologistpablo/SharkipediaR?style=social)](https://github.com/ecologistpablo/SharkipediaR)
+[![watchers - SharkipediaR](https://img.shields.io/github/watchers/ecologistpablo/SharkipediaR?style=social)](https://github.com/ecologistpablo/SharkipediaR)
 
 main branch:
-[![pkgdown](https://github.com/ecologistpablo/SharkpediaR/actions/workflows/pkgdown.yaml/badge.svg?branch=main)](https://github.com/ecologistpablo/SharkpediaR/actions/workflows/pkgdown.yaml)
+[![pkgdown](https://github.com/ecologistpablo/SharkipediaR/actions/workflows/pkgdown.yaml/badge.svg?branch=main)](https://github.com/ecologistpablo/SharkipediaR/actions/workflows/pkgdown.yaml)
 
 <!-- badges: end -->
 
@@ -45,7 +45,7 @@ It includes functions for:
 
 Every table includes **`source_url`** and **`retrieved_at`** so your workflows stay traceable to Sharkipedia and the original studies.
 
-**Documentation:** <https://ecologistpablo.github.io/SharkpediaR/>
+**Documentation:** <https://ecologistpablo.github.io/SharkipediaR/>
 
 <br>
 
@@ -57,13 +57,13 @@ You will need **devtools** (or **remotes**) to install from GitHub:
 
 ```r
 install.packages("devtools")
-devtools::install_github("ecologistpablo/SharkpediaR")
+devtools::install_github("ecologistpablo/SharkipediaR")
 ```
 
 The latest version can be installed with vignettes:
 
 ```r
-devtools::install_github("ecologistpablo/SharkpediaR", build_vignettes = TRUE)
+devtools::install_github("ecologistpablo/SharkipediaR", build_vignettes = TRUE)
 ```
 
 For tutorials and interactive plots, also install:
@@ -114,10 +114,10 @@ Every table includes **`source_url`** and **`retrieved_at`** for reproducible me
 **sharkipediaR** is a lightweight scientific client — not a bulk crawler. It reads the same public HTML pages you would open in a browser, with polite rate limits and in-session caching (`memoise`).
 
 <p align="center">
-  <img src="inst/images/sharkipedia-pipeline.svg" alt="sharkipediaR pipeline: Sharkipedia species pages flow through fetch, parse, clean, and sp_* functions into tidyverse analysis" width="960" style="max-width: 100%; height: auto;">
+  <img src="man/figures/README-pipeline.png" alt="sharkipediaR pipeline: Sharkipedia species pages flow through fetch, parse, clean, and sp_* functions into tidyverse analysis" width="100%">
 </p>
 
-For argument lists, return columns, and worked examples per function, see the [Package architecture](https://ecologistpablo.github.io/SharkpediaR/articles/architecture-and-functions.html) vignette.
+For argument lists, return columns, and worked examples per function, see the [Package architecture](https://ecologistpablo.github.io/SharkipediaR/articles/architecture-and-functions.html) vignette.
 
 <br>
 
@@ -125,9 +125,9 @@ For argument lists, return columns, and worked examples per function, see the [P
 
 | Resource | Description |
 |----------|-------------|
-| [Getting started](https://ecologistpablo.github.io/SharkpediaR/articles/sharkipediar.html) | Install, overview, workflow |
-| [Ecological workflows](https://ecologistpablo.github.io/SharkpediaR/articles/ecological-workflows.html) | Fisheries / conservation examples, interactive plots |
-| [Architecture & functions](https://ecologistpablo.github.io/SharkpediaR/articles/architecture-and-functions.html) | Pipeline, full function reference, internal parsers |
+| [Getting started](https://ecologistpablo.github.io/SharkipediaR/articles/sharkipediar.html) | Install, overview, workflow |
+| [Ecological workflows](https://ecologistpablo.github.io/SharkipediaR/articles/ecological-workflows.html) | Fisheries / conservation examples, interactive plots |
+| [Architecture & functions](https://ecologistpablo.github.io/SharkipediaR/articles/architecture-and-functions.html) | Pipeline, full function reference, internal parsers |
 
 In R: `utils::browseVignettes("sharkipediaR")`
 
@@ -142,7 +142,7 @@ Vignettes appear under **Articles** in the pkgdown navbar. The site is built wit
 If you work with shark and ray traits or trends, please consider helping:
 
 - **Try the package** on species and references you know well — does the output match what you see on the website?
-- **Suggest improvements** — new `sp_*()` helpers, clearer column names, or better defaults for common workflows ([open a feature request](https://github.com/ecologistpablo/SharkpediaR/issues/new))
+- **Suggest improvements** — new `sp_*()` helpers, clearer column names, or better defaults for common workflows ([open a feature request](https://github.com/ecologistpablo/SharkipediaR/issues/new))
 - **Report bugs** with a minimal reproducible example (species name, function called, what you expected vs. what you got)
 - **Share vignette ideas** — fisheries assessments, Red List prep, comparative trait analyses, or teaching examples you would like documented
 
@@ -152,7 +152,7 @@ You do not need to be an R package developer to help. Testing on real species pa
 
 ## What to do if you encounter a problem
 
-If you think you have found a bug or unexpected behaviour, post an issue [here](https://github.com/ecologistpablo/SharkpediaR/issues). Search existing issues first — someone may already have a workaround.
+If you think you have found a bug or unexpected behaviour, post an issue [here](https://github.com/ecologistpablo/SharkipediaR/issues). Search existing issues first — someone may already have a workaround.
 
 When you open a new issue, please:
 
@@ -167,8 +167,8 @@ When you open a new issue, please:
 
 Contributions from the elasmobranch and R communities are welcome.
 
-- Start a discussion with a [feature request](https://github.com/ecologistpablo/SharkpediaR/issues/new)
-- For well-scoped changes, open a [pull request](https://github.com/ecologistpablo/SharkpediaR/pulls)
+- Start a discussion with a [feature request](https://github.com/ecologistpablo/SharkipediaR/issues/new)
+- For well-scoped changes, open a [pull request](https://github.com/ecologistpablo/SharkipediaR/pulls)
 
 Please keep pull requests focused and match existing code style. See [DEVELOPMENT.md](DEVELOPMENT.md) for package layout.
 

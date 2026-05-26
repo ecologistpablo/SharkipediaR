@@ -1,7 +1,31 @@
 # sharkipediaR — Development blueprint
 
 > Internal design notes for contributors and AI-assisted development.  
-> User-facing documentation is in [README.md](README.md) and the [pkgdown site](https://ecologistpablo.github.io/SharkpediaR/).
+> User-facing documentation is in [README.md](README.md) and the [pkgdown site](https://ecologistpablo.github.io/SharkipediaR/).
+
+## Updating the website and vignettes
+
+The **README** on GitHub updates as soon as you push `README.md`. **Vignettes** and the **pkgdown site** (`docs/`) do not — they are built separately.
+
+1. Edit sources in `vignettes/*.Rmd` (and `README.md` if needed).
+2. From the package root, rebuild the site:
+
+```r
+# optional: refresh bundled vignette data
+source("data-raw/build-vignette-data.R")
+
+pkgdown::build_site(preview = FALSE)
+```
+
+Or in the terminal:
+
+```bash
+Rscript scripts/deploy-pkgdown.R   # builds docs/ and pushes gh-pages
+```
+
+3. Commit the updated `docs/` folder **or** push to `main` and let the [pkgdown GitHub Action](.github/workflows/pkgdown.yaml) rebuild and deploy.
+
+After renaming the GitHub repo to **SharkipediaR**, set **Settings → Pages** to deploy from branch `gh-pages` at `/`. The site URL is `https://ecologistpablo.github.io/SharkipediaR/`.
 
 ## Purpose
 

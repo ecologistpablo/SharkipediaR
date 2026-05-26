@@ -10,8 +10,8 @@ Description: G'day mate! This is a tidyverse-oriented R client for publicly acce
     life-history trait and population trend data. Provides polite HTML
     retrieval, modular parsing, and reproducible ecological workflows.
 License: MIT + file LICENSE
-URL: https://github.com/ecologistpablo/SharkpediaR, https://ecologistpablo.github.io/SharkpediaR/
-BugReports: https://github.com/ecologistpablo/SharkpediaR/issues
+URL: https://github.com/ecologistpablo/SharkipediaR, https://ecologistpablo.github.io/SharkipediaR/
+BugReports: https://github.com/ecologistpablo/SharkipediaR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

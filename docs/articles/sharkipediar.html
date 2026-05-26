@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Getting started with sharkipediaR • sharkipediaR</title>
+<title>Getting started • sharkipediaR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting started with sharkipediaR">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting started">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -30,20 +30,13 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="active nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/sharkipediar.html">Getting started with sharkipediaR</a></li>
-    <li><a class="dropdown-item" href="../articles/ecological-workflows.html">Ecological workflows with Sharkipedia data</a></li>
-    <li><a class="dropdown-item" href="../articles/architecture-and-functions.html">Package architecture and function reference</a></li>
-  </ul>
-</li>
+<li class="nav-item"><h6 class="dropdown-header" data-toc-skip>Tutorials</h6></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ecologistpablo/SharkpediaR/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ecologistpablo/SharkipediaR/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -57,189 +50,85 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Getting started with sharkipediaR</h1>
+      <h1>Getting started</h1>
                         <h4 data-toc-skip class="author">Pablo
 Fuenzalida</h4>
             
-            <h4 data-toc-skip class="date">2026-05-26</h4>
+            <h4 data-toc-skip class="date">2026-05-27</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ecologistpablo/SharkpediaR/blob/HEAD/vignettes/sharkipediar.Rmd" class="external-link"><code>vignettes/sharkipediar.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ecologistpablo/SharkipediaR/blob/HEAD/vignettes/sharkipediar.Rmd" class="external-link"><code>vignettes/sharkipediar.Rmd</code></a></small>
       <div class="d-none name"><code>sharkipediar.Rmd</code></div>
     </div>
 
     
     
 <div class="section level2">
-<h2 id="why-this-package-exists">Why this package exists<a class="anchor" aria-label="anchor" href="#why-this-package-exists"></a>
+<h2 id="what-this-tutorial-is-for">What this tutorial is for<a class="anchor" aria-label="anchor" href="#what-this-tutorial-is-for"></a>
 </h2>
-<p><a href="https://www.sharkipedia.org" class="external-link">Sharkipedia</a> is a curated,
-open database of shark and ray life-history traits and population
-abundance time series — the kind of comparative resource that underpins
-fisheries assessment, extinction-risk analysis, and macroecology (<a href="https://www.nature.com/articles/s41597-022-01655-1" class="external-link">Dulvy et al.,
-2022</a>). <strong>sharkipediaR</strong> brings those data into R as
-tidy tibbles so your workflows look like any other modern ecological
-analysis: <strong><code>%&gt;%</code></strong> pipes, explicit
-provenance, ggplot-ready tables, and interactive <strong>plotly</strong>
-charts in the ecological vignette.</p>
-<p>The package is deliberately <strong>not</strong> a bulk mirror of the
-website. It is a polite, reproducible client: rate-limited requests,
-in-session caching, and HTML parsing separated from cleaning and
-validation.</p>
+<p>This page is a <strong>quick tour</strong> of
+<strong>sharkipediaR</strong> — not the full package manual (that lives
+on the home page and in <strong>Reference</strong>).</p>
+<p><a href="https://www.sharkipedia.org" class="external-link">Sharkipedia</a> holds published
+shark and ray <strong>traits</strong> and <strong>population
+trends</strong>. This package pulls that into R as tidy tables you can
+filter and plot.</p>
 </div>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="load-the-package">Load the package<a class="anchor" aria-label="anchor" href="#load-the-package"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ecologistpablo/SharkpediaR"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ecologistpablo/SharkipediaR" class="external-link">sharkipediaR</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="three-commands-worth-knowing">Three commands worth knowing<a class="anchor" aria-label="anchor" href="#three-commands-worth-knowing"></a>
+</h2>
+<p>When you are online, almost everything starts here:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ecologistpablo/SharkpediaR" class="external-link">sharkipediaR</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.4.3</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     filter, lag</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/sp_species.html">sp_species</a></span><span class="op">(</span><span class="st">"Carcharodon carcharias"</span><span class="op">)</span>   <span class="co"># taxonomy</span></span>
+<span><span class="fu"><a href="../reference/sp_traits.html">sp_traits</a></span><span class="op">(</span><span class="st">"Carcharodon carcharias"</span><span class="op">)</span>    <span class="co"># life-history table</span></span>
+<span><span class="fu"><a href="../reference/sp_trends.html">sp_trends</a></span><span class="op">(</span><span class="st">"Carcharodon carcharias"</span><span class="op">)</span>      <span class="co"># abundance through time</span></span></code></pre></div>
+<p>Each result includes <strong><code>source_url</code></strong> and
+<strong><code>retrieved_at</code></strong> — keep them for methods
+sections and supplementary files.</p>
 </div>
 <div class="section level2">
-<h2 id="a-thirty-second-workflow">A thirty-second workflow<a class="anchor" aria-label="anchor" href="#a-thirty-second-workflow"></a>
+<h2 id="try-it-without-the-internet">Try it without the internet<a class="anchor" aria-label="anchor" href="#try-it-without-the-internet"></a>
 </h2>
-<p>With an internet connection, you can pull data for a single species
-in three lines:</p>
+<p>Vignettes use frozen data so GitHub Actions can build the site:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">meta</span>   <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sp_species.html">sp_species</a></span><span class="op">(</span><span class="st">"Carcharhinus acronotus"</span><span class="op">)</span></span>
-<span><span class="va">traits</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sp_traits.html">sp_traits</a></span><span class="op">(</span><span class="st">"Carcharhinus acronotus"</span><span class="op">)</span></span>
-<span><span class="va">trends</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sp_trends.html">sp_trends</a></span><span class="op">(</span><span class="st">"Carcharhinus acronotus"</span><span class="op">)</span></span></code></pre></div>
-<p>Every user-facing table includes
-<strong><code>source_url</code></strong> and
-<strong><code>retrieved_at</code></strong> so you can cite exactly what
-was downloaded and when — essential for Red List workshops, stock
-assessments, and supplementary materials.</p>
-</div>
-<div class="section level2">
-<h2 id="offline-example-data">Offline example data<a class="anchor" aria-label="anchor" href="#offline-example-data"></a>
-</h2>
-<p>Vignettes and <code>R CMD check</code> use a frozen example dataset
-so documentation builds without hitting the live site:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ex</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/example_carcharhinus.html">example_carcharhinus</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ex</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "species_meta"  "traits"        "trends"        "references"   </span></span>
-<span><span class="co">#&gt; [5] "species_index"</span></span></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th>List element</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>species_meta</code></td>
-<td>Taxonomy + provenance (one row)</td>
-</tr>
-<tr class="even">
-<td><code>traits</code></td>
-<td>Long-format life-history trait measurements</td>
-</tr>
-<tr class="odd">
-<td><code>trends</code></td>
-<td>Long-format population trend observations</td>
-</tr>
-<tr class="even">
-<td><code>references</code></td>
-<td>Reference IDs linked from the species page</td>
-</tr>
-<tr class="odd">
-<td><code>species_index</code></td>
-<td>Sample rows from the public species index</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level2">
-<h2 id="exported-functions-at-a-glance">Exported functions at a glance<a class="anchor" aria-label="anchor" href="#exported-functions-at-a-glance"></a>
-</h2>
-<table class="table">
-<colgroup>
-<col width="37%">
-<col width="29%">
-<col width="33%">
-</colgroup>
-<thead><tr class="header">
-<th>Function</th>
-<th>Script</th>
-<th>Purpose</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code><a href="../reference/sp_species_urls.html">sp_species_urls()</a></code></td>
-<td><code>R/sp_species_urls.R</code></td>
-<td>Discover species names and URLs from the index</td>
-</tr>
-<tr class="even">
-<td><code><a href="../reference/sp_search.html">sp_search()</a></code></td>
-<td><code>R/sp_search.R</code></td>
-<td>Filter the index by partial scientific name</td>
-</tr>
-<tr class="odd">
-<td><code><a href="../reference/sp_species.html">sp_species()</a></code></td>
-<td><code>R/sp_species.R</code></td>
-<td>Taxonomy metadata for one species</td>
-</tr>
-<tr class="even">
-<td><code><a href="../reference/sp_traits.html">sp_traits()</a></code></td>
-<td><code>R/sp_traits.R</code></td>
-<td>Life-history traits (long format)</td>
-</tr>
-<tr class="odd">
-<td><code><a href="../reference/sp_trends.html">sp_trends()</a></code></td>
-<td><code>R/sp_trends.R</code></td>
-<td>Population trends (long format)</td>
-</tr>
-<tr class="even">
-<td><code><a href="../reference/sp_references.html">sp_references()</a></code></td>
-<td><code>R/sp_references.R</code></td>
-<td>Bibliographic reference links</td>
-</tr>
-<tr class="odd">
-<td><code><a href="../reference/fetch_page.html">fetch_page()</a></code></td>
-<td><code>R/fetch.R</code></td>
-<td>Low-level HTML retrieval (advanced)</td>
-</tr>
-<tr class="even">
-<td><code><a href="../reference/example_carcharhinus.html">example_carcharhinus()</a></code></td>
-<td><code>R/example_data.R</code></td>
-<td>Offline example data</td>
-</tr>
-</tbody>
-</table>
-<p>Internal parsing and cleaning live in <code>R/parse.R</code>,
-<code>R/clean.R</code>, and <code>R/validate.R</code> — see the
-<strong>Architecture and function reference</strong> vignette.</p>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">ex</span><span class="op">$</span><span class="va">traits</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 39</span></span>
+<span><span class="co">#&gt; Columns: 11</span></span>
+<span><span class="co">#&gt; $ trait_name   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Direct Predation"<span style="color: #949494;">, </span>"Direct Predation"<span style="color: #949494;">, </span>"Amat50"<span style="color: #949494;">, </span>"Gestat…</span></span>
+<span><span class="co">#&gt; $ value        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Medium"<span style="color: #949494;">, </span>"Medium"<span style="color: #949494;">, </span>"4.3"<span style="color: #949494;">, </span>"11"<span style="color: #949494;">, </span>"15.51"<span style="color: #949494;">, </span>"35.35"<span style="color: #949494;">, </span>"28.83…</span></span>
+<span><span class="co">#&gt; $ standard     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Effect size"<span style="color: #949494;">, </span>"Strength of evidence"<span style="color: #949494;">, </span>"Year"<span style="color: #949494;">, </span>"Month"<span style="color: #949494;">, </span>"…</span></span>
+<span><span class="co">#&gt; $ value_type   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "mean"<span style="color: #949494;">, </span>"mean"<span style="color: #949494;">, </span>"mean"<span style="color: #949494;">, </span>"mean"<span style="color: #949494;">, </span>"mean"<span style="color: #949494;">, </span>"mean"<span style="color: #949494;">, </span>"mean"<span style="color: #949494;">, </span>"…</span></span>
+<span><span class="co">#&gt; $ sex          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Pooled"<span style="color: #949494;">, </span>"Pooled"<span style="color: #949494;">, </span>"Male"<span style="color: #949494;">, </span>"Female"<span style="color: #949494;">, </span>"Female"<span style="color: #949494;">, </span>"Female"<span style="color: #949494;">,</span>…</span></span>
+<span><span class="co">#&gt; $ location     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Caribbean"<span style="color: #949494;">, </span>"Caribbean"<span style="color: #949494;">, </span>"South Carolina"<span style="color: #949494;">, </span>"South Caroli…</span></span>
+<span><span class="co">#&gt; $ reference    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "clementi2021"<span style="color: #949494;">, </span>"clementi2021"<span style="color: #949494;">, </span>"driggers2004a"<span style="color: #949494;">, </span>"drigger…</span></span>
+<span><span class="co">#&gt; $ trait_group  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Ecological Role"<span style="color: #949494;">, </span>"Ecological Role"<span style="color: #949494;">, </span>"Age"<span style="color: #949494;">, </span>"Reproductio…</span></span>
+<span><span class="co">#&gt; $ species      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Carcharhinus acronotus"<span style="color: #949494;">, </span>"Carcharhinus acronotus"<span style="color: #949494;">, </span>"Carc…</span></span>
+<span><span class="co">#&gt; $ source_url   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://www.sharkipedia.org/species/carcharhinus-acronot…</span></span>
+<span><span class="co">#&gt; $ retrieved_at <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2026-05-25 12:00:00<span style="color: #949494;">, </span>2026-05-25 12:00:00<span style="color: #949494;">, </span>2026-05-25 12:…</span></span></code></pre></div>
+<p>For trend examples in the next tutorial, see
+<code><a href="../reference/example_reid2011_trends.html">example_reid2011_trends()</a></code> and
+<code><a href="../reference/example_white_shark_trends.html">example_white_shark_trends()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="where-to-go-next">Where to go next<a class="anchor" aria-label="anchor" href="#where-to-go-next"></a>
 </h2>
-<ul>
-<li>
-<strong>Ecological workflows</strong> — trait summaries, interactive
-<strong>plotly</strong> trend plots, <code>%&gt;%</code> workflows.</li>
-<li>
-<strong>Architecture and function reference</strong> — how every
-function in each script works, with pipeline examples.</li>
-</ul>
+<p><strong>Ecological workflows</strong> — ggplot + plotly, including <a href="https://www.sharkipedia.org/references/reid2011" class="external-link">Reid et
+al. (2011)</a> NSW meshing trends.</p>
+<p><strong>Package architecture</strong> — plain-language guide to every
+function.</p>
 </div>
 <div class="section level2">
-<h2 id="building-the-pkgdown-site">Building the pkgdown site<a class="anchor" aria-label="anchor" href="#building-the-pkgdown-site"></a>
+<h2 id="install-if-you-have-not-yet">Install (if you have not yet)<a class="anchor" aria-label="anchor" href="#install-if-you-have-not-yet"></a>
 </h2>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pkgdown"</span>, <span class="st">"ggplot2"</span>, <span class="st">"plotly"</span>, <span class="st">"htmltools"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>The site will include these vignettes under <strong>Articles</strong>
-automatically.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ecologistpablo/SharkipediaR"</span><span class="op">)</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

@@ -70,5 +70,5 @@ For trend examples in the next tutorial, see `example_reid2011_trends()` and `ex
 ## Install (if you have not yet)
 
 ```{r install, eval = FALSE}
-devtools::install_github("ecologistpablo/SharkpediaR")
+devtools::install_github("ecologistpablo/SharkipediaR")
 ```
